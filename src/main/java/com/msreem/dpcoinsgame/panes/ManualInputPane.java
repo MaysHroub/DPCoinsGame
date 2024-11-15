@@ -22,6 +22,7 @@ public class ManualInputPane extends BorderPane {
     private void init() {
         Label promptLabel = new Label("Enter a group of even number of coins\n(comma separated and up to 20 coins)");
         errorLabel = new Label();
+        errorLabel.setId("alert");
         TextField inputTF = new TextField();
         inputTF.setPromptText("Eg. 4,15,7,3,8,9");
 

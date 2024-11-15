@@ -50,3 +50,8 @@
     -fx-font-weight: bold;
     -fx-underline: true;
 }
+
+#alert {
+    -fx-text-fill: grey;
+    -fx-font-size: 16;
+}
