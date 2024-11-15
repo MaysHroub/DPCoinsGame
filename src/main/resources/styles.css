@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Emulogic';
+    src: url('fonts/Emulogic-zrEw.ttf');
+}
+
+.root {
+    -fx-font-family: Emulogic;
+    -fx-background-color: #141414;
+}
+
+.button {
+    -fx-background-color: #f5c116;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+}
+
+.button:hover {
+    -fx-background-color: #cfa416;
+}
+
+.button:pressed {
+    -fx-background-color: #a27c00;
+}
+
+#head1 {
+    -fx-text-fill: #00ffff;
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
+#head2 {
+    -fx-text-fill: yellow;
+    -fx-font-size: 84;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+}
