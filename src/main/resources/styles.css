@@ -29,6 +29,15 @@
     -fx-background-color: #a27c00;
 }
 
+.text-field {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-font-size: 14;
+}
+
 #head1 {
     -fx-text-fill: #00ffff;
     -fx-font-size: 25;
