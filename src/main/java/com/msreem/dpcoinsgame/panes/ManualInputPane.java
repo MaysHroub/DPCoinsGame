@@ -46,6 +46,10 @@ public class ManualInputPane extends BorderPane {
             alertLabel.setText("Please enter even number of coins and comma separated :)");
             return null;
         }
+        if (tokens.length > 20) {
+            alertLabel.setText("Please enter up to 20 coins");
+            return null;
+        }
         int[] coins = new int[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
             try {
