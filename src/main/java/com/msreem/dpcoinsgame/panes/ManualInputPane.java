@@ -55,6 +55,7 @@ public class ManualInputPane extends BorderPane {
                 return null;
             }
         }
+        alertLabel.setText("");
         return coins;
     }
 
