@@ -17,6 +17,11 @@ public class InputPane extends BorderPane {
     }
 
     private void init() {
+
+        /*
+            TO-DO: Add a label to tell the user about the file format
+        */
+
         loadFromFileBtn = new Button("Load data from file");
         enterManuallyBtn = new Button("Enter data manually");
         generateRandomBtn = new Button("Generate random data");
