@@ -8,6 +8,11 @@
     -fx-background-color: #141414;
 }
 
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 24;
+}
+
 .button {
     -fx-background-color: #f5c116;
     -fx-text-fill: white;
