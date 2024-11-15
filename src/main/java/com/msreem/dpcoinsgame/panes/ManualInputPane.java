@@ -7,12 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ManualInputPane extends BorderPane {
 
-    private Label errorLabel;
+    private Label alertLabel;
 
 
     public ManualInputPane() {
@@ -21,15 +20,15 @@ public class ManualInputPane extends BorderPane {
 
     private void init() {
         Label promptLabel = new Label("Enter a group of even number of coins\n(comma separated and up to 20 coins)");
-        errorLabel = new Label();
-        errorLabel.setId("alert");
+        alertLabel = new Label();
+        alertLabel.setId("alert");
         TextField inputTF = new TextField();
         inputTF.setPromptText("Eg. 4,15,7,3,8,9");
 
         Button nextBtn = new Button("NEXT");
         nextBtn.setOnAction(e -> validateInput(inputTF.getText()));
 
-        VBox vBox = new VBox(40, promptLabel, inputTF, errorLabel);
+        VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
@@ -44,7 +43,7 @@ public class ManualInputPane extends BorderPane {
         if (input == null) return null;
         String[] tokens = input.split(",");
         if (tokens.length == 0 || tokens.length % 2 != 0) {
-            errorLabel.setText("Please enter even number of coins and comma separated :)");
+            alertLabel.setText("Please enter even number of coins and comma separated :)");
             return null;
         }
         int[] coins = new int[tokens.length];
@@ -52,7 +51,7 @@ public class ManualInputPane extends BorderPane {
             try {
                 coins[i] = Integer.parseInt(tokens[i]);
             } catch (NumberFormatException e) {
-                errorLabel.setText("Please enter only integers :/");
+                alertLabel.setText("Please enter only integers :/");
                 return null;
             }
         }
