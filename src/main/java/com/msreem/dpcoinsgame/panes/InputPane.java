@@ -31,10 +31,10 @@ public class InputPane extends BorderPane {
 
         BorderPane.setAlignment(label, Pos.CENTER);
 
-        BorderPane.setMargin(buttonsVB, new Insets(0, 0, 100, 0));
-        BorderPane.setMargin(label, new Insets(100, 0, 0, 0));
+        BorderPane.setMargin(buttonsVB, new Insets(0, 0, 120, 0));
+        BorderPane.setMargin(label, new Insets(150, 0, 0, 0));
 
-        Animation.installFadeTransition(label, 1);
+        Animation.installFadeTransition(label, 1.5);
         Animation.installTranslateYTransition(loadFromFileBtn, 1, loadFromFileBtn.getTranslateY()+200, loadFromFileBtn.getTranslateY());
         Animation.installTranslateYTransition(enterManuallyBtn, 1.2, loadFromFileBtn.getTranslateY()+150, loadFromFileBtn.getTranslateY());
         Animation.installTranslateYTransition(generateRandomBtn, 1.4, loadFromFileBtn.getTranslateY()+100, loadFromFileBtn.getTranslateY());
