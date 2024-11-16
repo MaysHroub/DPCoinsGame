@@ -26,7 +26,7 @@ public class ManualInputPane extends BorderPane {
         inputTF.setPromptText("Eg. 4,15,7,3,8,9");
 
         Button nextBtn = new Button("NEXT");
-        nextBtn.setOnAction(e -> validateInput(inputTF.getText()));
+        nextBtn.setOnAction(e -> convertToCoins(inputTF.getText()));
 
         VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
         vBox.setAlignment(Pos.CENTER);
@@ -39,7 +39,7 @@ public class ManualInputPane extends BorderPane {
         BorderPane.setMargin(nextBtn, new Insets(0, 0, 50, 0));
     }
 
-    private int[] validateInput(String input) {
+    private int[] convertToCoins(String input) {
         if (input == null) return null;
         String[] tokens = input.split(",");
         if (tokens.length == 0 || tokens.length % 2 != 0) {
