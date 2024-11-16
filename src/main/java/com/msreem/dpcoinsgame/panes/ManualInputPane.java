@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -37,6 +38,9 @@ public class ManualInputPane extends BorderPane {
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
 
         BorderPane.setMargin(nextBtn, new Insets(0, 0, 50, 0));
+
+        Animation.installFadeTransition(inputTF, 1.2);
+        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
     }
 
     private int[] convertToCoins(String input) {
