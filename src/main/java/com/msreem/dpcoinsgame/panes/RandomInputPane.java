@@ -21,7 +21,7 @@ public class RandomInputPane extends BorderPane {
     }
 
     private void init() {
-        Label promptLabel = new Label("Enter the number of coins\n(an EVEN number and up to 20)");
+        Label promptLabel = new Label("Enter the number of coins\n(an EVEN number between 2 and 20)");
         alertLabel = new Label();
         alertLabel.setId("alert");
         alertLabel.setWrapText(true);
@@ -46,12 +46,19 @@ public class RandomInputPane extends BorderPane {
     }
 
     private int[] generateCoins(String numberOfCoins) {
-        if (numberOfCoins == null) return null;
+        if (numberOfCoins == null || numberOfCoins.isEmpty()) {
+            alertLabel.setText("Please enter a number");
+            return null;
+        }
         int n = 0;
         try {
             n = Integer.parseInt(numberOfCoins);
         } catch (NumberFormatException e) {
-            alertLabel.setText("Please enter only integers :/");
+            alertLabel.setText("Please enter only numbers :/");
+            return null;
+        }
+        if (n < 1 || n > 20 || n % 2 != 0) {
+            alertLabel.setText("Please enter an even number between 2 and 20");
             return null;
         }
         int[] coins = new int[n];
