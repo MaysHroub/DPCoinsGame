@@ -21,9 +21,12 @@ public class RandomInputPane extends BorderPane {
     }
 
     private void init() {
-        Label promptLabel = new Label("Enter the number of coins (an EVEN number and up to 20)");
+        Label promptLabel = new Label("Enter the number of coins\n(an EVEN number and up to 20)");
         alertLabel = new Label();
         alertLabel.setId("alert");
+        alertLabel.setWrapText(true);
+        alertLabel.prefWidthProperty().bind(promptLabel.widthProperty());
+        alertLabel.setAlignment(Pos.CENTER);
         TextField inputTF = new TextField();
         inputTF.setPromptText("Eg. 4");
 
