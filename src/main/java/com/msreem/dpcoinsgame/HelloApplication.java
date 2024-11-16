@@ -1,14 +1,9 @@
 package com.msreem.dpcoinsgame;
 
-import com.msreem.dpcoinsgame.panes.InputPane;
 import com.msreem.dpcoinsgame.panes.ManualInputPane;
-import com.msreem.dpcoinsgame.panes.WelcomePane;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
