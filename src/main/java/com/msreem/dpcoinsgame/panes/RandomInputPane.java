@@ -63,7 +63,7 @@ public class RandomInputPane extends BorderPane {
         }
         int[] coins = new int[n];
         for (int i = 0; i < n; i++)
-            coins[i] = (int) (Math.random() * 1000);
+            coins[i] = 1 + (int) (Math.random() * 199);
 
         alertLabel.setText(Arrays.toString(coins));
         return coins;
