@@ -55,3 +55,8 @@
     -fx-text-fill: grey;
     -fx-font-size: 16;
 }
+
+#player-turn {
+    -fx-text-fill: yellow;
+    -fx-font-size: 18;
+}
