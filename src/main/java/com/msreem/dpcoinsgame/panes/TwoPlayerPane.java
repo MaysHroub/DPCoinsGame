@@ -2,6 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -84,6 +85,10 @@ public class TwoPlayerPane extends StackPane {
         lowerLayout.setLeft(playerOneCoinsTable);
         lowerLayout.setRight(playerTwoCoinsTable);
 
+        VBox layout = new VBox(20, upperLayout, coinsHB, lowerLayout);
+        layout.setPadding(new Insets(20));
+
+        getChildren().add(layout);
     }
 
 }
