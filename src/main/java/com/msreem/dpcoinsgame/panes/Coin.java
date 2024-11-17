@@ -8,7 +8,7 @@ import javafx.scene.shape.Circle;
 public class Coin extends StackPane {
 
     public Coin(int value) {
-        Circle circle = new Circle(10, Color.GOLD);
+        Circle circle = new Circle(20, Color.GOLD);
         Label label = new Label(value + "");
         getChildren().addAll(circle, label);
     }

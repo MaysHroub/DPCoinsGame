@@ -73,7 +73,7 @@
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\java\com\msreem\dpcoinsgame" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.msreem.dpcoinsgame.HelloApplication" />
       <module name="DPCoinsGame" />
@@ -102,8 +102,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
