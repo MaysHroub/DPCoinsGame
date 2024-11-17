@@ -85,8 +85,11 @@ public class TwoPlayerPane extends StackPane {
         lowerLayout.setLeft(playerOneCoinsTable);
         lowerLayout.setRight(playerTwoCoinsTable);
 
-        VBox layout = new VBox(20, upperLayout, coinsHB, lowerLayout);
-        layout.setPadding(new Insets(20));
+        BorderPane layout = new BorderPane();
+        layout.setTop(upperLayout);
+        layout.setCenter(coinsHB);
+        layout.setBottom(lowerLayout);
+        layout.setPadding(new Insets(30));
 
         getChildren().add(layout);
     }
