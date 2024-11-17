@@ -42,6 +42,9 @@ public class TwoPlayerPane extends StackPane {
         upperLayout.setLeft(playerOneVB);
         upperLayout.setRight(playerTwoVB);
 
+        BorderPane.setMargin(playerOneVB, new Insets(0, 0, 0, 100));
+        BorderPane.setMargin(playerTwoVB, new Insets(0, 100, 0, 0));
+
         Coin[] coins = new Coin[20];
         for (int i = 0; i < 20; i++)
             coins[i] = new Coin(i+1);
