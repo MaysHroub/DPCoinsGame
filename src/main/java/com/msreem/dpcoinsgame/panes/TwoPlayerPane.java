@@ -27,9 +27,9 @@ public class TwoPlayerPane extends StackPane {
         ImageView marioImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario_fight.png"),
                 luigiImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi_fight.png");
 
-        marioImg.setFitHeight(150);
+        marioImg.setFitHeight(200);
         marioImg.setPreserveRatio(true);
-        luigiImg.setFitHeight(150);
+        luigiImg.setFitHeight(200);
         luigiImg.setPreserveRatio(true);
 
         VBox playerOneVB = new VBox(20, playerOneName, marioImg),
