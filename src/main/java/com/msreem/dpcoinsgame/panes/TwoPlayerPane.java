@@ -32,6 +32,7 @@ public class TwoPlayerPane extends StackPane {
         luigiImg.setFitHeight(200);
         luigiImg.setPreserveRatio(true);
 
+
         VBox playerOneVB = new VBox(20, playerOneName, marioImg),
                 playerTwoVB = new VBox(20, playerTwoName, luigiImg);
         playerOneVB.setAlignment(Pos.CENTER);
@@ -58,24 +59,27 @@ public class TwoPlayerPane extends StackPane {
         TableColumn<Label, String> playerOneCol = new TableColumn<>("Player 1 Coins");
         playerOneCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerOneCol.setPrefWidth(200);
-        playerOneCol.setResizable(false);
+        playerOneCol.setSortable(false);
         playerOneCoinsTable.getColumns().add(playerOneCol);
         ObservableList<Label> playerOneCoins = FXCollections.observableArrayList();
         for (int i = 1; i <= 10; i++)
             playerOneCoins.add(new Label("Coin " + i));
         playerOneCoinsTable.setItems(playerOneCoins);
+        playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         TableView<Label> playerTwoCoinsTable = new TableView<>();
         playerTwoCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerTwoCol = new TableColumn<>("Player 1 Coins");
+        TableColumn<Label, String> playerTwoCol = new TableColumn<>("Player 2 Coins");
         playerTwoCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerTwoCol.setPrefWidth(200);
-        playerTwoCol.setResizable(false);
+        playerTwoCol.setSortable(false);
         playerTwoCoinsTable.getColumns().add(playerTwoCol);
         ObservableList<Label> playerTwoCoins = FXCollections.observableArrayList();
         for (int i = 1; i <= 10; i++)
             playerTwoCoins.add(new Label("Coin " + i));
         playerTwoCoinsTable.setItems(playerTwoCoins);
+        playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
 
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button("HOME");
