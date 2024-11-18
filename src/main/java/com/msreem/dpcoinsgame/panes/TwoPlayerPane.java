@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.util.Animation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -102,27 +103,34 @@ public class TwoPlayerPane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
+        BorderPane toast = createMessageToast("Based on random selection, Player X was selected to start first");
 
+        getChildren().addAll(layout, toast);
+    }
+
+    private BorderPane createMessageToast(String message) {
         BorderPane messageBP = new BorderPane();
         messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.92); -fx-background-radius: 10;");
 
-        Label message = new Label("Based on random selection, Player X was selected to start first");
-        message.setWrapText(true);
-        message.setAlignment(Pos.CENTER);
-        message.setStyle("-fx-font-size: 16;");
+        Label messageL = new Label(message);
+        messageL.setWrapText(true);
+        messageL.setAlignment(Pos.CENTER);
+        messageL.setStyle("-fx-font-size: 16;");
 
         Button closeBtn = new Button("CLOSE");
         closeBtn.setStyle("-fx-background-color: transparent;");
 
-        messageBP.setCenter(message);
+        messageBP.setCenter(messageL);
         messageBP.setTop(closeBtn);
         messageBP.setPadding(new Insets(10));
         messageBP.maxWidthProperty().bind(widthProperty().divide(3));
         messageBP.maxHeightProperty().bind(heightProperty().divide(3));
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
-        BorderPane.setAlignment(message, Pos.CENTER);
+        BorderPane.setAlignment(messageL, Pos.CENTER);
 
-        getChildren().addAll(layout, messageBP);
+        Animation.installFadeTransition(messageBP, 1.5);
+
+        return messageBP;
     }
 
 }
