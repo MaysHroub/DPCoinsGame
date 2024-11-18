@@ -38,6 +38,26 @@
     -fx-font-size: 14;
 }
 
+.table-view {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: grey;
+    -fx-border-width: 5;
+}
+
+.table-view .column-header {
+    -fx-background-color: #0072b1;
+    -fx-text-fill: white;
+}
+
+.table-view .label {
+    -fx-font-size: 12;
+}
+
+.table-view .table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 13;
+}
+
 #head1 {
     -fx-text-fill: #00ffff;
     -fx-font-size: 25;
