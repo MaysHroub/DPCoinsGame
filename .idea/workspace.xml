@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59d454e9-7ba3-42a9-a3fe-0056f1b383e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoPlayerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoPlayerPane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoRobotPane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/grey-robot-fight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/red-robot-fight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +54,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;two-player-ui&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/images&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "cpu-battle-ui",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/images",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\images" />
