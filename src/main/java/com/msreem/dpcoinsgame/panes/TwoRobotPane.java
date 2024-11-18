@@ -94,9 +94,9 @@ public class TwoRobotPane extends StackPane {
                 nextMoveBtn = new Button("NEXT MOVE"),
                 dpTableBtn = new Button("SHOW DP TABLE");
 
-        HBox lowerBtnsHB = new HBox(40, dpTableBtn, resetBtn, homeBtn);
+        HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
         lowerBtnsHB.setAlignment(Pos.CENTER);
-        VBox buttonsVB = new VBox(50, nextMoveBtn, lowerBtnsHB);
+        VBox buttonsVB = new VBox(30, nextMoveBtn, dpTableBtn, lowerBtnsHB);
         buttonsVB.setAlignment(Pos.CENTER);
 
         BorderPane lowerLayout = new BorderPane();
