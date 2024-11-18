@@ -106,6 +106,9 @@ public class TwoPlayerPane extends StackPane {
         BorderPane toast = createMessageToast("Based on random selection, Player X was selected to start first");
 
         getChildren().addAll(layout, toast);
+
+        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-200, playerOneVB.getTranslateX());
+        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+200, playerTwoVB.getTranslateX());
     }
 
     private BorderPane createMessageToast(String message) {
