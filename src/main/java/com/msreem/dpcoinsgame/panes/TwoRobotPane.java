@@ -26,6 +26,9 @@ public class TwoRobotPane extends StackPane {
 
 
     private void init() {
+
+        // TO-DO: create a pane containing a text field with the DP table
+
         Label robotTurnL = new Label("Mario's Turn");
         ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
                 redRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\red-robot-fight.png");
