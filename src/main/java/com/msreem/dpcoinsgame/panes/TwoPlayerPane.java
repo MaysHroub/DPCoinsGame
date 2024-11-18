@@ -2,11 +2,13 @@ package com.msreem.dpcoinsgame.panes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -46,6 +48,7 @@ public class TwoPlayerPane extends StackPane {
         BorderPane.setMargin(playerOneVB, new Insets(0, 0, 0, 100));
         BorderPane.setMargin(playerTwoVB, new Insets(0, 100, 0, 0));
 
+
         Coin[] coins = new Coin[20];
         for (int i = 0; i < 20; i++)
             coins[i] = new Coin(i+1);
@@ -53,6 +56,7 @@ public class TwoPlayerPane extends StackPane {
         HBox coinsHB = new HBox(10);
         coinsHB.getChildren().addAll(Arrays.asList(coins));
         coinsHB.setAlignment(Pos.CENTER);
+
 
         TableView<Label> playerOneCoinsTable = new TableView<>();
         playerOneCoinsTable.setPrefHeight(180);
@@ -98,7 +102,27 @@ public class TwoPlayerPane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
-        getChildren().add(layout);
+
+        BorderPane messageBP = new BorderPane();
+        messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.92); -fx-background-radius: 10;");
+
+        Label message = new Label("Based on random selection, Player X was selected to start first");
+        message.setWrapText(true);
+        message.setAlignment(Pos.CENTER);
+        message.setStyle("-fx-font-size: 16;");
+
+        Button closeBtn = new Button("CLOSE");
+        closeBtn.setStyle("-fx-background-color: transparent;");
+
+        messageBP.setCenter(message);
+        messageBP.setTop(closeBtn);
+        messageBP.setPadding(new Insets(10));
+        messageBP.maxWidthProperty().bind(widthProperty().divide(3));
+        messageBP.maxHeightProperty().bind(heightProperty().divide(3));
+        BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
+        BorderPane.setAlignment(message, Pos.CENTER);
+
+        getChildren().addAll(layout, messageBP);
     }
 
 }
