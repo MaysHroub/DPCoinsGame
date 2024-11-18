@@ -23,6 +23,8 @@ public class TwoPlayerInfoPane extends BorderPane {
                 alertLabel = new Label();
         ImageView marioIV = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario.png"),
                 luigiIV = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi.png");
+
+        // TO-DO: add a limit to the name length
         TextField nameOneTF = new TextField(),
                     nameTwoTF = new TextField();
         Button nextBtn = new Button("NEXT");
