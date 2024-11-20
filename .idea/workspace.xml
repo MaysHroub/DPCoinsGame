@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="59d454e9-7ba3-42a9-a3fe-0056f1b383e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/navigation/NavigationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/navigation/NavigationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panetag/PaneTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panetag/PaneTag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -56,7 +59,7 @@
     "Application.Test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "navigation",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/images",
     "settings.editor.selected.configurable": "preferences.editor"
