@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,7 +29,10 @@ public class UserInputPane extends BorderPane {
         inputTF.setPromptText("Eg. 4,15,7,3,8,9");
 
         Button nextBtn = new Button("NEXT");
-        nextBtn.setOnAction(e -> convertToCoins(inputTF.getText()));
+        nextBtn.setOnAction(e -> {
+            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
+            // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+        });
 
         VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
         vBox.setAlignment(Pos.CENTER);

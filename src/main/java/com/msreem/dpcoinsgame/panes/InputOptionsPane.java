@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,7 +29,9 @@ public class InputOptionsPane extends BorderPane {
         Button generateRandomBtn = new Button("Generate random data");
         Button backBtn = new Button("BACK");
 
-
+        enterManuallyBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.USER_INPUT));
+        generateRandomBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RANDOM_INPUT));
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
 
         backBtn.setId("back-button");
 

@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,6 +35,11 @@ public class RandomInputPane extends BorderPane {
 
         Button nextBtn = new Button("NEXT");
         Button generateBtn = new Button("GENERATE RANDOM COINS");
+
+        nextBtn.setOnAction(e -> {
+            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
+            // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+        });
         generateBtn.setOnAction(e -> generateCoins(inputTF.getText()));
 
         VBox vBox = new VBox(40, promptLabel, inputTF, generateBtn, alertLabel);

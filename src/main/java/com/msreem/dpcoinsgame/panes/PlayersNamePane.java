@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,7 +29,10 @@ public class PlayersNamePane extends BorderPane {
         // TO-DO: add a limit to the name length
         TextField nameOneTF = new TextField(),
                     nameTwoTF = new TextField();
+
         Button nextBtn = new Button("NEXT");
+
+        nextBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
 
         marioIV.setPreserveRatio(true);
         marioIV.setFitHeight(250);
