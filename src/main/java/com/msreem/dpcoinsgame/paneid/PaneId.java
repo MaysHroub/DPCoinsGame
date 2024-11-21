@@ -1,6 +1,6 @@
-package com.msreem.dpcoinsgame.panetag;
+package com.msreem.dpcoinsgame.paneid;
 
-public enum PaneTag {
+public enum PaneId {
     START,
     INPUT_OPTIONS,
     USER_INPUT,

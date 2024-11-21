@@ -1,7 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.util.Animation;
-import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,13 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.util.Duration;
 
-public class WelcomePane extends BorderPane {
+public class StartPane extends BorderPane {
 
     private Button rulesBtn, twoPlayerBtn, dpGameBtn;
 
-    public WelcomePane() {
+    public StartPane() {
         init();
     }
 

@@ -11,9 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class TwoPlayerInfoPane extends BorderPane {
+public class PlayersNamePane extends BorderPane {
 
-    public TwoPlayerInfoPane() {
+    public PlayersNamePane() {
         init();
     }
 

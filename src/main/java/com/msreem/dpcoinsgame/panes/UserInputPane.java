@@ -10,12 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class ManualInputPane extends BorderPane {
+public class UserInputPane extends BorderPane {
 
     private Label alertLabel;
 
 
-    public ManualInputPane() {
+    public UserInputPane() {
         init();
     }
 

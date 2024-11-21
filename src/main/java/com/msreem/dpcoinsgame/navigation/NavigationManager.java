@@ -1,7 +1,7 @@
 package com.msreem.dpcoinsgame.navigation;
 
 import com.msreem.dpcoinsgame.panes.*;
-import com.msreem.dpcoinsgame.panetag.PaneTag;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.scene.Scene;
 
 
@@ -26,15 +26,15 @@ public class NavigationManager {
     }
 
     // TO-DO: use a hashtable for choosing the pane instead of creating it
-    public void navigateTo(PaneTag tag) {
+    public void navigateTo(PaneId tag) {
         switch (tag) {
-            case START -> scene.setRoot(new WelcomePane());
+            case START -> scene.setRoot(new StartPane());
             case INPUT_OPTIONS -> scene.setRoot(new InputOptionsPane());
-            case USER_INPUT -> scene.setRoot(new ManualInputPane());
+            case USER_INPUT -> scene.setRoot(new UserInputPane());
             case RANDOM_INPUT -> scene.setRoot(new RandomInputPane());
-            case PLAYERS_NAME_INPUT -> scene.setRoot(new TwoPlayerInfoPane());
+            case PLAYERS_NAME_INPUT -> scene.setRoot(new PlayersNamePane());
             case PLAYERS_GAME -> scene.setRoot(new TwoPlayerPane());
-            case DP_GAME -> scene.setRoot(new TwoRobotPane());
+            case DP_GAME -> scene.setRoot(new DPGamePane());
         }
     }
 

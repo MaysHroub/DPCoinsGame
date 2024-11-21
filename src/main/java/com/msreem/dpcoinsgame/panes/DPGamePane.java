@@ -18,9 +18,9 @@ import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
 
-public class TwoRobotPane extends StackPane {
+public class DPGamePane extends StackPane {
 
-    public TwoRobotPane() {
+    public DPGamePane() {
         init();
     }
 
