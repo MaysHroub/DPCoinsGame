@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Launcher extends Application {
     @Override
     public void start(Stage stage) {
-        Scene scene = new Scene(new StartPane(), 1200, 600);
+        Scene scene = new Scene(new RulesPane(), 1200, 600);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

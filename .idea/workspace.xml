@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59d454e9-7ba3-42a9-a3fe-0056f1b383e3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/RulesPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/navigation/NavigationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/navigation/NavigationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/ManualInputPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/UserInputPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoRobotPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/DPGamePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,22 +57,24 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Launcher.executor": "Run",
     "Application.Test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "rules-page",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/images",
+    "last_opened_file_path": "C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/fonts",
     "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\fonts" />
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\images" />
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\fonts" />
+      <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources\images" />
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\resources" />
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\java\com\msreem\dpcoinsgame" />
     </key>
