@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
 @font-face {
     font-family: 'Emulogic';
     src: url('fonts/Emulogic-zrEw.ttf');
@@ -79,4 +81,12 @@
 #player-turn {
     -fx-text-fill: yellow;
     -fx-font-size: 18;
+}
+
+#long-text-label {
+    -fx-font-family: 'Public Pixel';
+    -fx-font-size: 16;
+    -fx-text-fill: grey;
+    -fx-line-spacing: 10px;
+    -fx-font-weight: normal;
 }
