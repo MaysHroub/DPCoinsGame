@@ -13,16 +13,14 @@ import javafx.scene.layout.*;
 
 public class StartPane extends BorderPane {
 
-    private Button rulesBtn, twoPlayerBtn, dpGameBtn;
-
     public StartPane() {
         init();
     }
 
     private void init() {
-        rulesBtn = new Button("RULES");
-        twoPlayerBtn = new Button("TWO PLAYERS");
-        dpGameBtn = new Button("CPU BATTLE");
+        Button rulesBtn = new Button("RULES");
+        Button twoPlayerBtn = new Button("TWO PLAYERS");
+        Button dpGameBtn = new Button("CPU BATTLE");
 
         rulesBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RULES));
         twoPlayerBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));

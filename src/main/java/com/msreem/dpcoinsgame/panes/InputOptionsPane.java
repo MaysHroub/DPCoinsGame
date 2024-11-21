@@ -10,8 +10,6 @@ import javafx.scene.layout.VBox;
 
 public class InputOptionsPane extends BorderPane {
 
-    private Button loadFromFileBtn, enterManuallyBtn, generateRandomBtn;
-
     public InputOptionsPane() {
         init();
     }
@@ -24,10 +22,12 @@ public class InputOptionsPane extends BorderPane {
 
         Label label = new Label("SELECT YOUR INPUT METHOD");
 
-        loadFromFileBtn = new Button("Load data from file");
-        enterManuallyBtn = new Button("Enter data manually");
-        generateRandomBtn = new Button("Generate random data");
+        Button loadFromFileBtn = new Button("Load data from file");
+        Button enterManuallyBtn = new Button("Enter data manually");
+        Button generateRandomBtn = new Button("Generate random data");
         Button backBtn = new Button("BACK");
+
+
 
         backBtn.setId("back-button");
 
