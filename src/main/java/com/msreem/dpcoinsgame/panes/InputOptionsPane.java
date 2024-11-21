@@ -29,6 +29,8 @@ public class InputOptionsPane extends BorderPane {
         generateRandomBtn = new Button("Generate random data");
         Button backBtn = new Button("BACK");
 
+        backBtn.setId("back-button");
+
         VBox centerVB = new VBox(40, label, loadFromFileBtn, enterManuallyBtn, generateRandomBtn);
         centerVB.setAlignment(Pos.CENTER);
 
