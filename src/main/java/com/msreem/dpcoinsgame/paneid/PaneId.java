@@ -2,6 +2,7 @@ package com.msreem.dpcoinsgame.paneid;
 
 public enum PaneId {
     START,
+    RULES,
     INPUT_OPTIONS,
     USER_INPUT,
     RANDOM_INPUT,

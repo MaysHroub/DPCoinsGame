@@ -29,6 +29,7 @@ public class NavigationManager {
     public void navigateTo(PaneId tag) {
         switch (tag) {
             case START -> scene.setRoot(new StartPane());
+            case RULES -> scene.setRoot(new RulesPane());
             case INPUT_OPTIONS -> scene.setRoot(new InputOptionsPane());
             case USER_INPUT -> scene.setRoot(new UserInputPane());
             case RANDOM_INPUT -> scene.setRoot(new RandomInputPane());
