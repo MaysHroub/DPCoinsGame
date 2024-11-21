@@ -25,6 +25,7 @@ public class NavigationManager {
         }
     }
 
+    // TO-DO: use a hashtable for choosing the pane instead of creating it
     public void navigateTo(PaneTag tag) {
         switch (tag) {
             case START -> scene.setRoot(new WelcomePane());
