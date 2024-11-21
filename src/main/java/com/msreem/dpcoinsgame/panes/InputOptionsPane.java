@@ -22,22 +22,22 @@ public class InputOptionsPane extends BorderPane {
             TO-DO: Add a label to tell the user about the file format
         */
 
+        Label label = new Label("SELECT YOUR INPUT METHOD");
+
         loadFromFileBtn = new Button("Load data from file");
         enterManuallyBtn = new Button("Enter data manually");
         generateRandomBtn = new Button("Generate random data");
+        Button backBtn = new Button("BACK");
 
-        VBox buttonsVB = new VBox(40, loadFromFileBtn, enterManuallyBtn, generateRandomBtn);
-        buttonsVB.setAlignment(Pos.BOTTOM_CENTER);
+        VBox centerVB = new VBox(40, label, loadFromFileBtn, enterManuallyBtn, generateRandomBtn);
+        centerVB.setAlignment(Pos.CENTER);
 
-        Label label = new Label("SELECT YOUR INPUT METHOD");
+        setCenter(centerVB);
+        setTop(backBtn);
 
-        setTop(label);
-        setCenter(buttonsVB);
+        BorderPane.setAlignment(backBtn, Pos.TOP_LEFT);
 
-        BorderPane.setAlignment(label, Pos.CENTER);
-
-        BorderPane.setMargin(buttonsVB, new Insets(0, 0, 120, 0));
-        BorderPane.setMargin(label, new Insets(150, 0, 0, 0));
+        setPadding(new Insets(20));
 
         Animation.installFadeTransition(label, 1.5);
         Animation.installTranslateYTransition(loadFromFileBtn, 1, loadFromFileBtn.getTranslateY()+200, loadFromFileBtn.getTranslateY());
