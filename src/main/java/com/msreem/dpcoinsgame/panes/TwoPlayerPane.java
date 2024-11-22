@@ -23,11 +23,12 @@ public class TwoPlayerPane extends StackPane {
 
     private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
     private Label playerTurnL, playerOneScoreL, playerTwoScoreL;
+    private ImageView marioWinImg, luigiWinImg, drawImg;
+    private String[] playerNames;
     private int playerTurn;
     private Coin[] coins;
     private int l, r;
     private int playerOneScore, playerTwoScore;
-    private ImageView marioWinImg, luigiWinImg, drawImg;
 
 
     public TwoPlayerPane() {
@@ -36,14 +37,14 @@ public class TwoPlayerPane extends StackPane {
 
     private void init() {
         NavigationManager navigationManager = NavigationManager.getInstance();
-        String[] names = navigationManager.getGameState().getPlayerNames();
+        playerNames = navigationManager.getGameState().getPlayerNames();
 
-        Label playerOneNameL = new Label(names[0]),
-                playerTwoNameL = new Label(names[1]);
+        Label playerOneNameL = new Label(playerNames[0]),
+                playerTwoNameL = new Label(playerNames[1]);
 
         playerTurn = (int) (Math.random() * 2);
 
-        playerTurnL = new Label(names[playerTurn] + "'s Turn");
+        playerTurnL = new Label(playerNames[playerTurn] + "'s Turn");
 
         playerOneScoreL = new Label("SCORE: " + playerOneScore);
         playerTwoScoreL = new Label("SCORE: " + playerTwoScore);
@@ -103,7 +104,7 @@ public class TwoPlayerPane extends StackPane {
         playerOneCoinsTable = new TableView<>();
         playerOneCoinsTable.setPrefHeight(180);
         playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        TableColumn<Label, String> playerOneCol = new TableColumn<>(names[0] + " Coins");
+        TableColumn<Label, String> playerOneCol = new TableColumn<>(playerNames[0] + " Coins");
         playerOneCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerOneCol.setPrefWidth(200);
         playerOneCol.setSortable(false);
@@ -113,7 +114,7 @@ public class TwoPlayerPane extends StackPane {
         playerTwoCoinsTable = new TableView<>();
         playerTwoCoinsTable.setPrefHeight(180);
         playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        TableColumn<Label, String> playerTwoCol = new TableColumn<>(names[1] + " Coins");
+        TableColumn<Label, String> playerTwoCol = new TableColumn<>(playerNames[1] + " Coins");
         playerTwoCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerTwoCol.setPrefWidth(200);
         playerTwoCol.setSortable(false);
@@ -148,7 +149,7 @@ public class TwoPlayerPane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        BorderPane toast = createMessageToast("Based on random selection, Player " + names[playerTurn] + " was selected to start first", null);
+        BorderPane toast = createMessageToast("Based on random selection, Player " + playerNames[playerTurn] + " was selected to start first.", null);
 
         getChildren().addAll(layout, toast);
 
@@ -157,7 +158,7 @@ public class TwoPlayerPane extends StackPane {
     }
 
     private void resetGame() {
-        playerTurnL.setText(NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + "'s Turn");
+        playerTurnL.setText(playerNames[playerTurn] + "'s Turn");
 
         playerOneCoinsTable.getItems().clear();
         playerOneCoinsTable.refresh();
@@ -176,7 +177,7 @@ public class TwoPlayerPane extends StackPane {
         playerTwoScore = 0;
         playerTwoScoreL.setText("SCORE: 0");
 
-        BorderPane toast = createMessageToast("Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + " is selected to start first.", null);
+        BorderPane toast = createMessageToast("Player " + playerNames[playerTurn] + " is selected to start first.", null);
         getChildren().add(toast);
     }
 
@@ -207,18 +208,18 @@ public class TwoPlayerPane extends StackPane {
         }
 
         playerTurn ^= 1;
-        playerTurnL.setText(NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + "'s Turn");
+        playerTurnL.setText(playerNames[playerTurn] + "'s Turn");
     }
 
     private void announceWinner() {
         String message = "DRAW Between The Two Players!";
         ImageView img = drawImg;
         if (playerOneScore > playerTwoScore) {
-            message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[0] + " has WON!";
+            message = "Player " + playerNames[0] + " has WON!";
             img = marioWinImg;
         }
         else if (playerOneScore < playerTwoScore) {
-            message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[1] + " has WON!";
+            message = "Player " + playerNames[1] + " has WON!";
             img = luigiWinImg;
         }
 
