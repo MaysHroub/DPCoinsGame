@@ -46,6 +46,8 @@ public class TwoPlayerPane extends StackPane {
 
         playerOneScoreL = new Label("SCORE: " + playerOneScore);
         playerTwoScoreL = new Label("SCORE: " + playerTwoScore);
+        playerOneScoreL.setStyle("-fx-font-size: 18;");
+        playerTwoScoreL.setStyle("-fx-font-size: 18;");
 
         ImageView marioImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario_fight.png"),
                 luigiImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi_fight.png");
@@ -113,7 +115,8 @@ public class TwoPlayerPane extends StackPane {
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button("HOME");
 
-        homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        resetBtn.setOnAction(e -> resetGame());
+        homeBtn.setOnAction(e -> navigationManager.navigateTo(PaneId.START));
 
         VBox buttonsVB = new VBox(30, resetBtn, homeBtn);
         buttonsVB.setAlignment(Pos.CENTER);
@@ -137,6 +140,30 @@ public class TwoPlayerPane extends StackPane {
 
         Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-200, playerOneVB.getTranslateX());
         Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+200, playerTwoVB.getTranslateX());
+    }
+
+    private void resetGame() {
+        playerTurnL.setText(NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + "'s Turn");
+
+        playerOneCoinsTable.getItems().clear();
+        playerOneCoinsTable.refresh();
+        playerTwoCoinsTable.getItems().clear();
+        playerTwoCoinsTable.refresh();
+
+        l = 0; r = coins.length-1;
+        for (int i = 0; i < coins.length; i++) {
+            coins[i].setVisible(true);
+            // coins[i].setOnMouseClicked(e -> updateScore( ((Coin)e.getSource()).getIndex() ));
+            coins[i].setDisable(i != 0 && i != coins.length - 1);
+        }
+
+        playerOneScore = 0;
+        playerOneScoreL.setText("SCORE: 0");
+        playerTwoScore = 0;
+        playerTwoScoreL.setText("SCORE: 0");
+
+        BorderPane toast = createMessageToast("Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + " is selected to start first.");
+        getChildren().add(toast);
     }
 
     private void updateScore(int indexOfClickedCoin) {
