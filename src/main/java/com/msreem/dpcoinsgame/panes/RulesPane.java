@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -29,9 +31,10 @@ public class RulesPane extends VBox {
         rulesL.setWrapText(true);
         rulesL.setId("long-text-label");
 
-        Button homeBtn = new Button("HOME");
+        Button backBtn = new Button("BACK");
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
 
-        getChildren().addAll(titleL, rulesL, homeBtn);
+        getChildren().addAll(titleL, rulesL, backBtn);
         setSpacing(30);
         setPadding(new Insets(30, 160, 30, 160));
         setAlignment(Pos.CENTER);

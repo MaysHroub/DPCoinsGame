@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,8 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class InputOptionsPane extends BorderPane {
-
-    private Button loadFromFileBtn, enterManuallyBtn, generateRandomBtn;
 
     public InputOptionsPane() {
         init();
@@ -22,22 +22,32 @@ public class InputOptionsPane extends BorderPane {
             TO-DO: Add a label to tell the user about the file format
         */
 
-        loadFromFileBtn = new Button("Load data from file");
-        enterManuallyBtn = new Button("Enter data manually");
-        generateRandomBtn = new Button("Generate random data");
-
-        VBox buttonsVB = new VBox(40, loadFromFileBtn, enterManuallyBtn, generateRandomBtn);
-        buttonsVB.setAlignment(Pos.BOTTOM_CENTER);
-
         Label label = new Label("SELECT YOUR INPUT METHOD");
 
-        setTop(label);
-        setCenter(buttonsVB);
+        Button loadFromFileBtn = new Button("Load data from file");
+        Button enterManuallyBtn = new Button("Enter data manually");
+        Button generateRandomBtn = new Button("Generate random data");
+        Button backBtn = new Button("BACK");
 
-        BorderPane.setAlignment(label, Pos.CENTER);
+        enterManuallyBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.USER_INPUT));
+        generateRandomBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RANDOM_INPUT));
+        backBtn.setOnAction(e -> {
+            NavigationManager navigationManager = NavigationManager.getInstance();
+            PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.START : PaneId.PLAYERS_NAME_INPUT;
+            navigationManager.navigateTo(paneId);
+        });
 
-        BorderPane.setMargin(buttonsVB, new Insets(0, 0, 120, 0));
-        BorderPane.setMargin(label, new Insets(150, 0, 0, 0));
+        backBtn.setId("back-button");
+
+        VBox centerVB = new VBox(40, label, loadFromFileBtn, enterManuallyBtn, generateRandomBtn);
+        centerVB.setAlignment(Pos.CENTER);
+
+        setCenter(centerVB);
+        setTop(backBtn);
+
+        BorderPane.setAlignment(backBtn, Pos.TOP_LEFT);
+
+        setPadding(new Insets(20));
 
         Animation.installFadeTransition(label, 1.5);
         Animation.installTranslateYTransition(loadFromFileBtn, 1, loadFromFileBtn.getTranslateY()+200, loadFromFileBtn.getTranslateY());

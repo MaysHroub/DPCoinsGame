@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -88,6 +90,8 @@ public class TwoPlayerPane extends StackPane {
 
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button("HOME");
+
+        homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
 
         VBox buttonsVB = new VBox(30, resetBtn, homeBtn);
         buttonsVB.setAlignment(Pos.CENTER);

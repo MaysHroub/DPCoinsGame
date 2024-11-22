@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,17 +35,32 @@ public class RandomInputPane extends BorderPane {
 
         Button nextBtn = new Button("NEXT");
         Button generateBtn = new Button("GENERATE RANDOM COINS");
+        Button backBtn = new Button("BACK");
+
+        nextBtn.setOnAction(e -> {
+            int[] coinValues = generateCoins(inputTF.getText());
+            if (coinValues != null) {
+                NavigationManager navigationManager = NavigationManager.getInstance();
+                navigationManager.getGameState().setCoinValues(coinValues);
+                PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.DP_GAME : PaneId.PLAYERS_GAME;
+                navigationManager.navigateTo(paneId);
+            }
+        });
         generateBtn.setOnAction(e -> generateCoins(inputTF.getText()));
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
+        backBtn.setId("back-button");
 
         VBox vBox = new VBox(40, promptLabel, inputTF, generateBtn, alertLabel);
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
         setBottom(nextBtn);
+        setTop(backBtn);
 
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
+        BorderPane.setAlignment(backBtn, Pos.TOP_LEFT);
 
-        BorderPane.setMargin(nextBtn, new Insets(0, 0, 50, 0));
+        setPadding(new Insets(20));
 
         Animation.installFadeTransition(inputTF, 1.2);
         Animation.installTranslateYTransition(generateBtn, .7, generateBtn.getTranslateY()+100, generateBtn.getTranslateY());

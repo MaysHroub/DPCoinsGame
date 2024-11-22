@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,16 +13,24 @@ import javafx.scene.layout.*;
 
 public class StartPane extends BorderPane {
 
-    private Button rulesBtn, twoPlayerBtn, dpGameBtn;
-
     public StartPane() {
         init();
     }
 
     private void init() {
-        rulesBtn = new Button("RULES");
-        twoPlayerBtn = new Button("TWO PLAYERS");
-        dpGameBtn = new Button("CPU BATTLE");
+        Button rulesBtn = new Button("RULES");
+        Button twoPlayerBtn = new Button("TWO PLAYERS");
+        Button dpGameBtn = new Button("CPU BATTLE");
+
+        rulesBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RULES));
+        twoPlayerBtn.setOnAction(e -> {
+            NavigationManager.getInstance().getGameState().setLaunchDPGame(false);
+            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_NAME_INPUT);
+        });
+        dpGameBtn.setOnAction(e -> {
+            NavigationManager.getInstance().getGameState().setLaunchDPGame(true);
+            NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
+        });
 
         ImageView twoPlayersImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\two-players.png");
         twoPlayersImg.setFitHeight(200);

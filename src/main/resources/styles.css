@@ -90,3 +90,19 @@
     -fx-line-spacing: 10px;
     -fx-font-weight: normal;
 }
+
+#back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: grey;
+    -fx-font-size: 18;
+}
+
+#back-button:hover {
+    -fx-background-color: grey;
+    -fx-text-fill: black;
+}
+
+#back-button:pressed {
+    -fx-background-color: lightgrey;
+    -fx-text-fill: black;
+}

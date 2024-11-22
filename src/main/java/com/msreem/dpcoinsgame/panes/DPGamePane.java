@@ -1,5 +1,7 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.navigation.NavigationManager;
+import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -93,6 +95,8 @@ public class DPGamePane extends StackPane {
                 homeBtn = new Button(" HOME "),
                 nextMoveBtn = new Button("NEXT MOVE"),
                 dpTableBtn = new Button("SHOW DP TABLE");
+
+        homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
         lowerBtnsHB.setAlignment(Pos.CENTER);
