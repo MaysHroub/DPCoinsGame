@@ -30,9 +30,12 @@ public class PlayersNamePane extends BorderPane {
         TextField nameOneTF = new TextField(),
                     nameTwoTF = new TextField();
 
-        Button nextBtn = new Button("NEXT");
+        Button nextBtn = new Button("NEXT"),
+                backBtn = new Button("BACK");
 
         nextBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        backBtn.setId("back-button");
 
         marioIV.setPreserveRatio(true);
         marioIV.setFitHeight(250);
@@ -53,6 +56,9 @@ public class PlayersNamePane extends BorderPane {
 
         setCenter(hBox);
         setBottom(vBox);
+        setTop(backBtn);
+
+        BorderPane.setAlignment(backBtn, Pos.TOP_LEFT);
 
         setPadding(new Insets(20, 20, 50, 20));
 

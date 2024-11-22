@@ -28,21 +28,27 @@ public class UserInputPane extends BorderPane {
         TextField inputTF = new TextField();
         inputTF.setPromptText("Eg. 4,15,7,3,8,9");
 
-        Button nextBtn = new Button("NEXT");
+        Button nextBtn = new Button("NEXT"),
+                backBtn = new Button("BACK");
+
         nextBtn.setOnAction(e -> {
             NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
             // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
         });
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
+        backBtn.setId("back-button");
 
         VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
         setBottom(nextBtn);
+        setTop(backBtn);
 
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
+        BorderPane.setAlignment(backBtn, Pos.TOP_LEFT);
 
-        BorderPane.setMargin(nextBtn, new Insets(0, 0, 50, 0));
+        setPadding(new Insets(20));
 
         Animation.installFadeTransition(inputTF, 1.2);
         Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());

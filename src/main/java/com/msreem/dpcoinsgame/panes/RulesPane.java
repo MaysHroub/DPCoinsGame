@@ -31,10 +31,10 @@ public class RulesPane extends VBox {
         rulesL.setWrapText(true);
         rulesL.setId("long-text-label");
 
-        Button homeBtn = new Button("HOME");
-        homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        Button backBtn = new Button("BACK");
+        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
 
-        getChildren().addAll(titleL, rulesL, homeBtn);
+        getChildren().addAll(titleL, rulesL, backBtn);
         setSpacing(30);
         setPadding(new Insets(30, 160, 30, 160));
         setAlignment(Pos.CENTER);
