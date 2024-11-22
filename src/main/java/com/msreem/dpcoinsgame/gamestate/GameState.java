@@ -4,6 +4,7 @@ public class GameState {
 
     private String[] playerNames;
     private int[] coinValues;
+    private boolean launchDPGame;
 
     public String[] getPlayerNames() {
         return playerNames;
@@ -19,5 +20,13 @@ public class GameState {
 
     public void setCoinValues(int[] coinValues) {
         this.coinValues = coinValues;
+    }
+
+    public boolean isLaunchDPGame() {
+        return launchDPGame;
+    }
+
+    public void setLaunchDPGame(boolean launchDPGame) {
+        this.launchDPGame = launchDPGame;
     }
 }

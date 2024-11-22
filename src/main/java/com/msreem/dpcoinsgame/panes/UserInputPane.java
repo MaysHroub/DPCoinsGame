@@ -34,9 +34,10 @@ public class UserInputPane extends BorderPane {
         nextBtn.setOnAction(e -> {
             int[] coinValues = convertToCoins(inputTF.getText());
             if (coinValues != null) {
-                NavigationManager.getInstance().getGameState().setCoinValues(coinValues);
-                NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
-                // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+                NavigationManager navigationManager = NavigationManager.getInstance();
+                navigationManager.getGameState().setCoinValues(coinValues);
+                PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.DP_GAME : PaneId.PLAYERS_GAME;
+                navigationManager.navigateTo(paneId);
             }
         });
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));

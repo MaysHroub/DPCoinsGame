@@ -31,7 +31,11 @@ public class InputOptionsPane extends BorderPane {
 
         enterManuallyBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.USER_INPUT));
         generateRandomBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RANDOM_INPUT));
-        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        backBtn.setOnAction(e -> {
+            NavigationManager navigationManager = NavigationManager.getInstance();
+            PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.START : PaneId.PLAYERS_NAME_INPUT;
+            navigationManager.navigateTo(paneId);
+        });
 
         backBtn.setId("back-button");
 

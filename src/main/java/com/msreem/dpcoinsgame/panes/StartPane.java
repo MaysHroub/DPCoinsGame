@@ -23,8 +23,14 @@ public class StartPane extends BorderPane {
         Button dpGameBtn = new Button("CPU BATTLE");
 
         rulesBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RULES));
-        twoPlayerBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_NAME_INPUT));
-        dpGameBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
+        twoPlayerBtn.setOnAction(e -> {
+            NavigationManager.getInstance().getGameState().setLaunchDPGame(false);
+            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_NAME_INPUT);
+        });
+        dpGameBtn.setOnAction(e -> {
+            NavigationManager.getInstance().getGameState().setLaunchDPGame(true);
+            NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
+        });
 
         ImageView twoPlayersImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\two-players.png");
         twoPlayersImg.setFitHeight(200);
