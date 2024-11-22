@@ -27,6 +27,7 @@ public class TwoPlayerPane extends StackPane {
     private Coin[] coins;
     private int l, r;
     private int playerOneScore, playerTwoScore;
+    private ImageView marioWinImg, luigiWinImg, drawImg;
 
 
     public TwoPlayerPane() {
@@ -56,6 +57,19 @@ public class TwoPlayerPane extends StackPane {
         marioImg.setPreserveRatio(true);
         luigiImg.setFitHeight(170);
         luigiImg.setPreserveRatio(true);
+
+        marioWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario-win.jpg");
+        luigiWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi-win.jpg");
+        drawImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\draw.jpg");
+        marioWinImg.setId("image-with-border");
+        luigiWinImg.setId("image-with-border");
+        drawImg.setId("image-with-border");
+        marioWinImg.setFitHeight(190);
+        marioWinImg.setPreserveRatio(true);
+        luigiWinImg.setFitHeight(190);
+        luigiWinImg.setPreserveRatio(true);
+        drawImg.setFitHeight(190);
+        drawImg.setPreserveRatio(true);
 
 
         VBox playerOneVB = new VBox(10, playerOneNameL, marioImg),
@@ -134,7 +148,7 @@ public class TwoPlayerPane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        BorderPane toast = createMessageToast("Based on random selection, Player " + names[playerTurn] + " was selected to start first");
+        BorderPane toast = createMessageToast("Based on random selection, Player " + names[playerTurn] + " was selected to start first", null);
 
         getChildren().addAll(layout, toast);
 
@@ -162,7 +176,7 @@ public class TwoPlayerPane extends StackPane {
         playerTwoScore = 0;
         playerTwoScoreL.setText("SCORE: 0");
 
-        BorderPane toast = createMessageToast("Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + " is selected to start first.");
+        BorderPane toast = createMessageToast("Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + " is selected to start first.", null);
         getChildren().add(toast);
     }
 
@@ -197,19 +211,22 @@ public class TwoPlayerPane extends StackPane {
     }
 
     private void announceWinner() {
-        String message = "";
-        if (playerOneScore == playerTwoScore)
-            message = "DRAW Between The Two Players!";
-        else if (playerOneScore > playerTwoScore)
+        String message = "DRAW Between The Two Players!";
+        ImageView img = drawImg;
+        if (playerOneScore > playerTwoScore) {
             message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[0] + " has WON!";
-        else
+            img = marioWinImg;
+        }
+        else if (playerOneScore < playerTwoScore) {
             message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[1] + " has WON!";
+            img = luigiWinImg;
+        }
 
-        BorderPane toast = createMessageToast(message);
+        BorderPane toast = createMessageToast(message, img);
         getChildren().add(toast);
     }
 
-    private BorderPane createMessageToast(String message) {
+    private BorderPane createMessageToast(String message, ImageView img) {
         BorderPane messageBP = new BorderPane();
         messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");
 
@@ -219,18 +236,22 @@ public class TwoPlayerPane extends StackPane {
         messageL.setStyle("-fx-font-size: 16;");
 
         Button closeBtn = new Button("CLOSE");
-        // closeBtn.setStyle("-fx-background-color: transparent;");
         closeBtn.setId("back-button");
         closeBtn.setOnAction(e -> {
             messageBP.setDisable(true);
             messageBP.setVisible(false);
         });
 
-        messageBP.setCenter(messageL);
+        if (img == null)
+            messageBP.setCenter(messageL);
+        else {
+            messageBP.setCenter(img);
+            messageBP.setBottom(messageL);
+        }
         messageBP.setTop(closeBtn);
         messageBP.setPadding(new Insets(10));
-        messageBP.maxWidthProperty().bind(widthProperty().divide(3));
-        messageBP.maxHeightProperty().bind(heightProperty().divide(3));
+        messageBP.maxWidthProperty().bind(widthProperty().divide(2));
+        messageBP.maxHeightProperty().bind(heightProperty().divide(2));
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 

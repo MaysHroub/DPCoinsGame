@@ -115,3 +115,10 @@
     -fx-opacity: 1.0;
     -fx-text-fill: grey;
 }
+
+#image-with-border {
+    -fx-border-color: white;
+    -fx-border-width: 4;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
