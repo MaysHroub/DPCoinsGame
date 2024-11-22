@@ -54,13 +54,12 @@ public class DPGamePane extends StackPane {
         BorderPane.setMargin(greyRobotVB, new Insets(0, 0, 0, 100));
         BorderPane.setMargin(redRobotVB, new Insets(0, 100, 0, 0));
 
-
-        Coin[] coins = new Coin[20];
-        for (int i = 0; i < 20; i++)
-            coins[i] = new Coin(i+1);
+//        Coin[] coins = new Coin[20];
+//        for (int i = 0; i < 20; i++)
+//            coins[i] = new Coin(i+1);
 
         HBox coinsHB = new HBox(10);
-        coinsHB.getChildren().addAll(Arrays.asList(coins));
+        //coinsHB.getChildren().addAll(Arrays.asList(coins));
         coinsHB.setAlignment(Pos.CENTER);
 
 
