@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.navigation;
 
+import com.msreem.dpcoinsgame.gamestate.GameState;
 import com.msreem.dpcoinsgame.panes.*;
 import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ public class NavigationManager {
 
     private static NavigationManager instance;
     private Scene scene;
+    private GameState gameState;
 
     private NavigationManager() {}
 
@@ -21,6 +23,7 @@ public class NavigationManager {
     public static void init(Scene scene) {
         if (instance == null) {
             instance = new NavigationManager();
+            instance.gameState = new GameState();
             instance.scene = scene;
         }
     }
@@ -39,4 +42,7 @@ public class NavigationManager {
         }
     }
 
+    public GameState getGameState() {
+        return gameState;
+    }
 }
