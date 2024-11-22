@@ -26,8 +26,8 @@ public class NavigationManager {
     }
 
     // TO-DO: use a hashtable for choosing the pane instead of creating it
-    public void navigateTo(PaneId tag) {
-        switch (tag) {
+    public void navigateTo(PaneId id) {
+        switch (id) {
             case START -> scene.setRoot(new StartPane());
             case RULES -> scene.setRoot(new RulesPane());
             case INPUT_OPTIONS -> scene.setRoot(new InputOptionsPane());
