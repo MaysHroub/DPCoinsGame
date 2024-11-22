@@ -38,8 +38,12 @@ public class RandomInputPane extends BorderPane {
         Button backBtn = new Button("BACK");
 
         nextBtn.setOnAction(e -> {
-            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
-            // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+            int[] coinValues = generateCoins(inputTF.getText());
+            if (coinValues != null) {
+                NavigationManager.getInstance().getGameState().setCoinValues(coinValues);
+                NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
+                // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+            }
         });
         generateBtn.setOnAction(e -> generateCoins(inputTF.getText()));
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));

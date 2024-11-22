@@ -32,8 +32,12 @@ public class UserInputPane extends BorderPane {
                 backBtn = new Button("BACK");
 
         nextBtn.setOnAction(e -> {
-            NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
-            // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+            int[] coinValues = convertToCoins(inputTF.getText());
+            if (coinValues != null) {
+                NavigationManager.getInstance().getGameState().setCoinValues(coinValues);
+                NavigationManager.getInstance().navigateTo(PaneId.PLAYERS_GAME);
+                // NavigationManager.getInstance().navigateTo(PaneId.DP_GAME);
+            }
         });
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
         backBtn.setId("back-button");

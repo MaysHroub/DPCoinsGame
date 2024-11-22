@@ -36,8 +36,10 @@ public class PlayersNamePane extends BorderPane {
                 backBtn = new Button("BACK");
 
         nextBtn.setOnAction(e -> {
-            if (isInputValid(nameOneTF, alertLabel) && isInputValid(nameTwoTF, alertLabel))
+            if (isInputValid(nameOneTF, alertLabel) && isInputValid(nameTwoTF, alertLabel)) {
+                NavigationManager.getInstance().getGameState().setPlayerNames(new String[]{nameOneTF.getText(), nameTwoTF.getText()});
                 NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
+            }
         });
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         backBtn.setId("back-button");
