@@ -62,9 +62,6 @@ public class TwoPlayerPane extends StackPane {
         marioWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario-win.jpg");
         luigiWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi-win.jpg");
         drawImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\draw.jpg");
-        marioWinImg.setId("image-with-border");
-        luigiWinImg.setId("image-with-border");
-        drawImg.setId("image-with-border");
         marioWinImg.setFitHeight(190);
         marioWinImg.setPreserveRatio(true);
         luigiWinImg.setFitHeight(190);
