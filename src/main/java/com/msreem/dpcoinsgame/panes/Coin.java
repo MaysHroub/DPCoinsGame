@@ -18,8 +18,8 @@ public class Coin extends StackPane {
         Circle circle = new Circle(22);
         circle.setStyle("-fx-fill: gold; -fx-stroke: orange; -fx-stroke-width: 3; -fx-text-alignment: center;");
         Label label = new Label(value + "");
-        label.setStyle("-fx-font-size: 12;");
         getChildren().addAll(circle, label);
+        setId("coin");
     }
 
     public int getIndex() {

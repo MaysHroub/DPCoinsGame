@@ -106,3 +106,12 @@
     -fx-background-color: lightgrey;
     -fx-text-fill: black;
 }
+
+#coin .label {
+    -fx-font-size: 12;
+}
+
+#coin:disabled .label {
+    -fx-opacity: 1.0;
+    -fx-text-fill: grey;
+}
