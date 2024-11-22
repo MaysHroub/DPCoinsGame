@@ -26,6 +26,7 @@ public class TwoPlayerPane extends StackPane {
     private int playerTurn;
     private Coin[] coins;
     private int l, r;
+    private int playerOneScore, playerTwoScore;
 
 
     public TwoPlayerPane() {
@@ -137,16 +138,35 @@ public class TwoPlayerPane extends StackPane {
             coins[--r].setDisable(false);
 
         Label coinL = new Label("Coin " + coins[indexOfClickedCoin].getValue());
-        if (playerTurn == 0)
+        if (playerTurn == 0) {
             playerOneCoinsTable.getItems().add(coinL);
-        else
+            playerOneScore += coins[indexOfClickedCoin].getValue();
+        }
+        else {
             playerTwoCoinsTable.getItems().add(coinL);
+            playerTwoScore += coins[indexOfClickedCoin].getValue();
+        }
+
+        if (l > r) {
+            announceWinner();
+            return;
+        }
 
         playerTurn ^= 1;
         playerTurnL.setText(NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + "'s Turn");
+    }
 
-//        if (l >= r)
-//            announceWinner();
+    private void announceWinner() {
+        String message = "";
+        if (playerOneScore == playerTwoScore)
+            message = "DRAW Between The Two Players!";
+        else if (playerOneScore > playerTwoScore)
+            message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[0] + " has WON!";
+        else
+            message = "Player " + NavigationManager.getInstance().getGameState().getPlayerNames()[1] + " has WON!";
+
+        BorderPane toast = createMessageToast(message);
+        getChildren().add(toast);
     }
 
     private BorderPane createMessageToast(String message) {
