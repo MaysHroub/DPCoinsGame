@@ -21,14 +21,29 @@ import java.util.Arrays;
 
 public class TwoPlayerPane extends StackPane {
 
+    private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
+    private Label playerTurnL;
+    private int playerTurn;
+    private Coin[] coins;
+    private int l, r;
+
+
     public TwoPlayerPane() {
         init();
     }
 
     private void init() {
-        Label playerOneName = new Label("MARIO"),
-                playerTwoName = new Label("LUIGI"),
-                playerTurn = new Label("Mario's Turn");
+        NavigationManager navigationManager = NavigationManager.getInstance();
+        String[] names = navigationManager.getGameState().getPlayerNames();
+
+        Label playerOneNameL = new Label(names[0]),
+                playerTwoNameL = new Label(names[1]);
+
+        playerTurn = (int) (Math.random() * 2);
+
+        playerTurnL = new Label(names[playerTurn] + "'s Turn");
+
+
         ImageView marioImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario_fight.png"),
                 luigiImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi_fight.png");
 
@@ -38,54 +53,51 @@ public class TwoPlayerPane extends StackPane {
         luigiImg.setPreserveRatio(true);
 
 
-        VBox playerOneVB = new VBox(20, playerOneName, marioImg),
-                playerTwoVB = new VBox(20, playerTwoName, luigiImg);
+        VBox playerOneVB = new VBox(20, playerOneNameL, marioImg),
+                playerTwoVB = new VBox(20, playerTwoNameL, luigiImg);
         playerOneVB.setAlignment(Pos.CENTER);
         playerTwoVB.setAlignment(Pos.CENTER);
 
         BorderPane upperLayout = new BorderPane();
-        upperLayout.setCenter(playerTurn);
+        upperLayout.setCenter(playerTurnL);
         upperLayout.setLeft(playerOneVB);
         upperLayout.setRight(playerTwoVB);
 
         BorderPane.setMargin(playerOneVB, new Insets(0, 0, 0, 100));
         BorderPane.setMargin(playerTwoVB, new Insets(0, 100, 0, 0));
 
-
-        Coin[] coins = new Coin[20];
-        for (int i = 0; i < 20; i++)
-            coins[i] = new Coin(i+1);
+        int[] coinValues = navigationManager.getGameState().getCoinValues();
+        coins = new Coin[coinValues.length];
+        for (int i = 0; i < coins.length; i++) {
+            coins[i] = new Coin(coinValues[i], i);
+            coins[i].setOnMouseClicked(e -> updateScore( ((Coin)e.getSource()).getIndex() ));
+            if (i != 0 && i != coins.length-1) coins[i].setDisable(true);
+        }
+        l = 0; r = coins.length-1;
 
         HBox coinsHB = new HBox(10);
         coinsHB.getChildren().addAll(Arrays.asList(coins));
         coinsHB.setAlignment(Pos.CENTER);
 
 
-        TableView<Label> playerOneCoinsTable = new TableView<>();
+        playerOneCoinsTable = new TableView<>();
         playerOneCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerOneCol = new TableColumn<>("Player 1 Coins");
+        playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        TableColumn<Label, String> playerOneCol = new TableColumn<>(names[0] + " Coins");
         playerOneCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerOneCol.setPrefWidth(200);
         playerOneCol.setSortable(false);
         playerOneCoinsTable.getColumns().add(playerOneCol);
-        ObservableList<Label> playerOneCoins = FXCollections.observableArrayList();
-        for (int i = 1; i <= 10; i++)
-            playerOneCoins.add(new Label("Coin " + i));
-        playerOneCoinsTable.setItems(playerOneCoins);
-        playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        TableView<Label> playerTwoCoinsTable = new TableView<>();
+
+        playerTwoCoinsTable = new TableView<>();
         playerTwoCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerTwoCol = new TableColumn<>("Player 2 Coins");
+        playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        TableColumn<Label, String> playerTwoCol = new TableColumn<>(names[1] + " Coins");
         playerTwoCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerTwoCol.setPrefWidth(200);
         playerTwoCol.setSortable(false);
         playerTwoCoinsTable.getColumns().add(playerTwoCol);
-        ObservableList<Label> playerTwoCoins = FXCollections.observableArrayList();
-        for (int i = 1; i <= 10; i++)
-            playerTwoCoins.add(new Label("Coin " + i));
-        playerTwoCoinsTable.setItems(playerTwoCoins);
-        playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 
         Button resetBtn = new Button("RESET"),
@@ -107,7 +119,7 @@ public class TwoPlayerPane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
-        BorderPane toast = createMessageToast("Based on random selection, Player X was selected to start first");
+        BorderPane toast = createMessageToast("Based on random selection, Player " + names[playerTurn] + " was selected to start first");
 
         getChildren().addAll(layout, toast);
 
@@ -115,9 +127,31 @@ public class TwoPlayerPane extends StackPane {
         Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+200, playerTwoVB.getTranslateX());
     }
 
+    private void updateScore(int indexOfClickedCoin) {
+        // remove the coin, enable the adjacent one, update score/table of current player and change turns
+        coins[indexOfClickedCoin].setDisable(true);
+        coins[indexOfClickedCoin].setVisible(false);
+        if (indexOfClickedCoin == l && l < coins.length-1)
+            coins[++l].setDisable(false);
+        else if (indexOfClickedCoin == r && r > 0)
+            coins[--r].setDisable(false);
+
+        Label coinL = new Label("Coin " + coins[indexOfClickedCoin].getValue());
+        if (playerTurn == 0)
+            playerOneCoinsTable.getItems().add(coinL);
+        else
+            playerTwoCoinsTable.getItems().add(coinL);
+
+        playerTurn ^= 1;
+        playerTurnL.setText(NavigationManager.getInstance().getGameState().getPlayerNames()[playerTurn] + "'s Turn");
+
+//        if (l >= r)
+//            announceWinner();
+    }
+
     private BorderPane createMessageToast(String message) {
         BorderPane messageBP = new BorderPane();
-        messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.92); -fx-background-radius: 10;");
+        messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");
 
         Label messageL = new Label(message);
         messageL.setWrapText(true);
@@ -125,7 +159,12 @@ public class TwoPlayerPane extends StackPane {
         messageL.setStyle("-fx-font-size: 16;");
 
         Button closeBtn = new Button("CLOSE");
-        closeBtn.setStyle("-fx-background-color: transparent;");
+        // closeBtn.setStyle("-fx-background-color: transparent;");
+        closeBtn.setId("back-button");
+        closeBtn.setOnAction(e -> {
+            messageBP.setDisable(true);
+            messageBP.setVisible(false);
+        });
 
         messageBP.setCenter(messageL);
         messageBP.setTop(closeBtn);
