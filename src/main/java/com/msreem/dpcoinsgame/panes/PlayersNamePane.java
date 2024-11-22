@@ -23,17 +23,22 @@ public class PlayersNamePane extends BorderPane {
         Label promptName1Label = new Label("Enter Player 1 Name"),
                 promptName2Label = new Label("Enter Player 2 Name"),
                 alertLabel = new Label();
+
+        alertLabel.setId("alert");
+
         ImageView marioIV = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario.png"),
                 luigiIV = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi.png");
 
-        // TO-DO: add a limit to the name length
         TextField nameOneTF = new TextField(),
                     nameTwoTF = new TextField();
 
         Button nextBtn = new Button("NEXT"),
                 backBtn = new Button("BACK");
 
-        nextBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
+        nextBtn.setOnAction(e -> {
+            if (isInputValid(nameOneTF, alertLabel) && isInputValid(nameTwoTF, alertLabel))
+                NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
+        });
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         backBtn.setId("back-button");
 
@@ -65,6 +70,17 @@ public class PlayersNamePane extends BorderPane {
         Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
         Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-100, playerOneVB.getTranslateX());
         Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+100, playerTwoVB.getTranslateX());
+    }
+
+    private boolean isInputValid(TextField inputTF, Label alertLabel) {
+        if (inputTF.getText() == null || inputTF.getText().isEmpty()) {
+            alertLabel.setText("Enter your names in the text field.");
+            return false;
+        } else if (inputTF.getText().length() > 20) {
+            alertLabel.setText("The name must be 1-12 characters.");
+            return false;
+        }
+        return true;
     }
 
 }
