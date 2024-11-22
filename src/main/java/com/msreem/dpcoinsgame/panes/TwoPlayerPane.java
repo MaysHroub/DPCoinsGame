@@ -22,7 +22,7 @@ import java.util.Arrays;
 public class TwoPlayerPane extends StackPane {
 
     private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
-    private Label playerTurnL;
+    private Label playerTurnL, playerOneScoreL, playerTwoScoreL;
     private int playerTurn;
     private Coin[] coins;
     private int l, r;
@@ -44,18 +44,20 @@ public class TwoPlayerPane extends StackPane {
 
         playerTurnL = new Label(names[playerTurn] + "'s Turn");
 
+        playerOneScoreL = new Label("SCORE: " + playerOneScore);
+        playerTwoScoreL = new Label("SCORE: " + playerTwoScore);
 
         ImageView marioImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\mario_fight.png"),
                 luigiImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\luigi_fight.png");
 
-        marioImg.setFitHeight(200);
+        marioImg.setFitHeight(170);
         marioImg.setPreserveRatio(true);
-        luigiImg.setFitHeight(200);
+        luigiImg.setFitHeight(170);
         luigiImg.setPreserveRatio(true);
 
 
-        VBox playerOneVB = new VBox(20, playerOneNameL, marioImg),
-                playerTwoVB = new VBox(20, playerTwoNameL, luigiImg);
+        VBox playerOneVB = new VBox(10, playerOneNameL, marioImg),
+                playerTwoVB = new VBox(10, playerTwoNameL, luigiImg);
         playerOneVB.setAlignment(Pos.CENTER);
         playerTwoVB.setAlignment(Pos.CENTER);
 
@@ -79,6 +81,7 @@ public class TwoPlayerPane extends StackPane {
         HBox coinsHB = new HBox(10);
         coinsHB.getChildren().addAll(Arrays.asList(coins));
         coinsHB.setAlignment(Pos.CENTER);
+        coinsHB.setStyle("-fx-border-color: white;");
 
 
         playerOneCoinsTable = new TableView<>();
@@ -100,6 +103,12 @@ public class TwoPlayerPane extends StackPane {
         playerTwoCol.setSortable(false);
         playerTwoCoinsTable.getColumns().add(playerTwoCol);
 
+        VBox playerOneCoinsVB = new VBox(20, playerOneScoreL, playerOneCoinsTable);
+        playerOneCoinsVB.setAlignment(Pos.CENTER);
+
+        VBox playerTwoCoinsVB = new VBox(20, playerTwoScoreL, playerTwoCoinsTable);
+        playerTwoCoinsVB.setAlignment(Pos.CENTER);
+
 
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button("HOME");
@@ -111,14 +120,16 @@ public class TwoPlayerPane extends StackPane {
 
         BorderPane lowerLayout = new BorderPane();
         lowerLayout.setCenter(buttonsVB);
-        lowerLayout.setLeft(playerOneCoinsTable);
-        lowerLayout.setRight(playerTwoCoinsTable);
+        lowerLayout.setLeft(playerOneCoinsVB);
+        lowerLayout.setRight(playerTwoCoinsVB);
 
         BorderPane layout = new BorderPane();
         layout.setTop(upperLayout);
         layout.setCenter(coinsHB);
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
+
+        BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
         BorderPane toast = createMessageToast("Based on random selection, Player " + names[playerTurn] + " was selected to start first");
 
@@ -141,10 +152,12 @@ public class TwoPlayerPane extends StackPane {
         if (playerTurn == 0) {
             playerOneCoinsTable.getItems().add(coinL);
             playerOneScore += coins[indexOfClickedCoin].getValue();
+            playerOneScoreL.setText("SCORE: " + playerOneScore);
         }
         else {
             playerTwoCoinsTable.getItems().add(coinL);
             playerTwoScore += coins[indexOfClickedCoin].getValue();
+            playerTwoScoreL.setText("SCORE: " + playerTwoScore);
         }
 
         if (l > r) {
