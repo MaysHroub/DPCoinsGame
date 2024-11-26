@@ -76,11 +76,14 @@ public class DPGamePane extends StackPane {
         BorderPane.setMargin(redRobotVB, new Insets(0, 100, 0, 0));
 
 
-        HBox coinsHB = new HBox(10);
         coins = new Coin[n];
         for (int i = 0; i < n; i++)
             coins[i] = new Coin(coinValues[i], i);
+
+        HBox coinsHB = new HBox(10);
+        coinsHB.getChildren().addAll(Arrays.asList(coins));
         coinsHB.setAlignment(Pos.CENTER);
+        coinsHB.setStyle("-fx-border-color: white;");
 
 
         playerOneCoinsTable = new TableView<>();
