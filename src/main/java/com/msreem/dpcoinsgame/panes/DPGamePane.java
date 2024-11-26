@@ -23,7 +23,13 @@ import java.util.Arrays;
 
 public class DPGamePane extends StackPane {
 
+    private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
+    private Label playerTurnL, playerOneScoreL, playerTwoScoreL;
     private DPGameLogic dpLogic;
+    private Coin[] coins;
+    private int l, r;
+    private int turn;
+    private int playerOneScore, playerTwoScore;
 
 
     public DPGamePane() {
@@ -36,7 +42,14 @@ public class DPGamePane extends StackPane {
         dpLogic.calculateTable();
         dpLogic.calculatePlayersCoins();
 
-        Label robotTurnL = new Label("Mario's Turn");
+        l = 0; r = coinValues.length-1;
+
+        playerTurnL = new Label("Mario's Turn");
+        playerOneScoreL = new Label("SCORE: " + playerOneScore);
+        playerTwoScoreL = new Label("SCORE: " + playerTwoScore);
+        playerOneScoreL.setStyle("-fx-font-size: 18;");
+        playerTwoScoreL.setStyle("-fx-font-size: 18;");
+
         ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
                 redRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\red-robot-fight.png");
 
@@ -52,43 +65,38 @@ public class DPGamePane extends StackPane {
         redRobotVB.setAlignment(Pos.CENTER);
 
         BorderPane upperLayout = new BorderPane();
-        upperLayout.setCenter(robotTurnL);
+        upperLayout.setCenter(playerTurnL);
         upperLayout.setLeft(greyRobotVB);
         upperLayout.setRight(redRobotVB);
 
         BorderPane.setMargin(greyRobotVB, new Insets(0, 0, 0, 100));
         BorderPane.setMargin(redRobotVB, new Insets(0, 100, 0, 0));
 
+
         HBox coinsHB = new HBox(10);
-        //coinsHB.getChildren().addAll(Arrays.asList(coins));
+        coins = new Coin[coinValues.length];
+        for (int i = 0; i < coins.length; i++)
+            coins[i] = new Coin(coinValues[i], i);
         coinsHB.setAlignment(Pos.CENTER);
 
 
-        TableView<Label> greyRobotCoinsTable = new TableView<>();
-        greyRobotCoinsTable.setPrefHeight(180);
+        playerOneCoinsTable = new TableView<>();
+        playerOneCoinsTable.setPrefHeight(180);
         TableColumn<Label, String> greyRobotCol = new TableColumn<>("GREY ROBOT Coins");
         greyRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         greyRobotCol.setPrefWidth(200);
         greyRobotCol.setSortable(false);
-        greyRobotCoinsTable.getColumns().add(greyRobotCol);
-        ObservableList<Label> greyRobotCoins = FXCollections.observableArrayList();
-        for (int i = 1; i <= 10; i++)
-            greyRobotCoins.add(new Label("Coin " + i));
-        greyRobotCoinsTable.setItems(greyRobotCoins);
-        greyRobotCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        playerOneCoinsTable.getColumns().add(greyRobotCol);
+        playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        TableView<Label> redRobotCoinsTable = new TableView<>();
-        redRobotCoinsTable.setPrefHeight(180);
+        playerTwoCoinsTable = new TableView<>();
+        playerTwoCoinsTable.setPrefHeight(180);
         TableColumn<Label, String> redRobotCol = new TableColumn<>("RED ROBOT Coins");
         redRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         redRobotCol.setPrefWidth(200);
         redRobotCol.setSortable(false);
-        redRobotCoinsTable.getColumns().add(redRobotCol);
-        ObservableList<Label> redRobotCoins = FXCollections.observableArrayList();
-        for (int i = 1; i <= 10; i++)
-            redRobotCoins.add(new Label("Coin " + i));
-        redRobotCoinsTable.setItems(redRobotCoins);
-        redRobotCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        playerTwoCoinsTable.getColumns().add(redRobotCol);
+        playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 
         Button resetBtn = new Button("RESET"),
@@ -103,10 +111,16 @@ public class DPGamePane extends StackPane {
         VBox buttonsVB = new VBox(30, nextMoveBtn, dpTableBtn, lowerBtnsHB);
         buttonsVB.setAlignment(Pos.CENTER);
 
+        VBox playerOneCoinsVB = new VBox(20, playerOneScoreL, playerOneCoinsTable);
+        playerOneCoinsVB.setAlignment(Pos.CENTER);
+
+        VBox playerTwoCoinsVB = new VBox(20, playerTwoScoreL, playerTwoCoinsTable);
+        playerTwoCoinsVB.setAlignment(Pos.CENTER);
+
         BorderPane lowerLayout = new BorderPane();
         lowerLayout.setCenter(buttonsVB);
-        lowerLayout.setLeft(greyRobotCoinsTable);
-        lowerLayout.setRight(redRobotCoinsTable);
+        lowerLayout.setLeft(playerOneCoinsVB);
+        lowerLayout.setRight(playerTwoCoinsVB);
 
         BorderPane layout = new BorderPane();
         layout.setTop(upperLayout);
