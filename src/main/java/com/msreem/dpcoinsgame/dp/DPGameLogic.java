@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.dp;
 
 public class DPGameLogic {
 
-    private int[] coins, playerOneCoins, playerTwoCoins;
+    private int[] coins, playerOneCoinIndices, playerTwoCoinIndices;
     private int[][] dpTable;
     private char[][] directions;
 
@@ -42,17 +42,17 @@ public class DPGameLogic {
 
     public void calculatePlayersCoins() {
         int n = coins.length;
-        playerOneCoins = new int[n/2];
-        playerTwoCoins = new int[n/2];
+        playerOneCoinIndices = new int[n/2];
+        playerTwoCoinIndices = new int[n/2];
         int i1 = 0, i2 = 0;
         int l = 0, r = n-1;
         while (l <= r) {
             char dir = directions[l][r];
             if ((r-l) % 2 != 0) {
-                playerOneCoins[i1] = dir == 'L' ? coins[r] : coins[l];
+                playerOneCoinIndices[i1] = dir == 'L' ? r : l;
                 i1++;
             } else {
-                playerTwoCoins[i2] = dir == 'L' ? coins[r] : coins[l];
+                playerTwoCoinIndices[i2] = dir == 'L' ? r : l;
                 i2++;
             }
             if (dir == 'L') r--;
@@ -77,10 +77,10 @@ public class DPGameLogic {
     }
 
     public int[] getPlayerOneCoins() {
-        return playerOneCoins;
+        return playerOneCoinIndices;
     }
 
     public int[] getPlayerTwoCoins() {
-        return playerTwoCoins;
+        return playerTwoCoinIndices;
     }
 }
