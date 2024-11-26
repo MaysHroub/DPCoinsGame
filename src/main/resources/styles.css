@@ -107,13 +107,27 @@
     -fx-text-fill: black;
 }
 
+#coin {
+    -fx-background-color: gold;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: orange;
+    -fx-border-width: 3;
+    -fx-min-width: 50;
+    -fx-max-height: 50;
+}
+
 #coin .label {
     -fx-font-size: 12;
 }
 
+#coin:disabled {
+    -fx-opacity: 0.8;
+}
+
 #coin:disabled .label {
     -fx-opacity: 1.0;
-    -fx-text-fill: grey;
+    -fx-text-fill: wheat;
 }
 
 #image-with-border {
