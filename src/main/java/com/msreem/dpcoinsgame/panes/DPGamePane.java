@@ -23,11 +23,12 @@ import java.util.Arrays;
 
 public class DPGamePane extends StackPane {
 
-    private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
+    private TableView<String> playerOneCoinsTable, playerTwoCoinsTable;
     private Label playerTurnL, playerOneScoreL, playerTwoScoreL;
     private DPGameLogic dpLogic;
     private Coin[] coins;
     private int l, r;
+    private int i1, i2;
     private int turn;
     private int playerOneScore, playerTwoScore;
 
@@ -42,7 +43,9 @@ public class DPGamePane extends StackPane {
         dpLogic.calculateTable();
         dpLogic.calculatePlayersCoins();
 
-        l = 0; r = coinValues.length-1;
+        int n = coinValues.length;
+        l = 0; r = n-1;
+        i1 = n/2 - 1; i2 = n/2 - 1;
 
         playerTurnL = new Label("Mario's Turn");
         playerOneScoreL = new Label("SCORE: " + playerOneScore);
@@ -74,15 +77,15 @@ public class DPGamePane extends StackPane {
 
 
         HBox coinsHB = new HBox(10);
-        coins = new Coin[coinValues.length];
-        for (int i = 0; i < coins.length; i++)
+        coins = new Coin[n];
+        for (int i = 0; i < n; i++)
             coins[i] = new Coin(coinValues[i], i);
         coinsHB.setAlignment(Pos.CENTER);
 
 
         playerOneCoinsTable = new TableView<>();
         playerOneCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> greyRobotCol = new TableColumn<>("GREY ROBOT Coins");
+        TableColumn<String, String> greyRobotCol = new TableColumn<>("GREY ROBOT Coins");
         greyRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         greyRobotCol.setPrefWidth(200);
         greyRobotCol.setSortable(false);
@@ -91,7 +94,7 @@ public class DPGamePane extends StackPane {
 
         playerTwoCoinsTable = new TableView<>();
         playerTwoCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> redRobotCol = new TableColumn<>("RED ROBOT Coins");
+        TableColumn<String, String> redRobotCol = new TableColumn<>("RED ROBOT Coins");
         redRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         redRobotCol.setPrefWidth(200);
         redRobotCol.setSortable(false);
@@ -105,6 +108,7 @@ public class DPGamePane extends StackPane {
                 dpTableBtn = new Button("SHOW DP TABLE");
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        nextMoveBtn.setOnAction(e -> playNextMove());
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
         lowerBtnsHB.setAlignment(Pos.CENTER);
@@ -135,6 +139,31 @@ public class DPGamePane extends StackPane {
 
         Animation.installTranslateXTransition(greyRobotVB, 1, greyRobotVB.getTranslateX()-200, greyRobotVB.getTranslateX());
         Animation.installTranslateXTransition(redRobotVB, 1, redRobotVB.getTranslateX()+200, redRobotVB.getTranslateX());
+    }
+
+    private void playNextMove() {
+        int coinIdx = dpLogic.getPlayerOneCoins()[turn == 0 ? i1 : i2];
+        if (coinIdx == l) l++;
+        else r--;
+        String coin = "Coin " + coins[coinIdx].getValue();
+
+        if (turn == 0) {
+            // colour the coin to be the same as the robot colour and disable it maybe...
+            playerOneCoinsTable.getItems().add(coin);
+            playerOneScore += coins[coinIdx].getValue();
+            playerOneScoreL.setText("SCORE: " + playerOneScore);
+        }
+        else {
+            // colour the coin to be the same as the player colour and disable it maybe...
+            playerTwoCoinsTable.getItems().add(coin);
+            playerTwoScore += coins[coinIdx].getValue();
+            playerTwoScoreL.setText("SCORE: " + playerOneScore);
+        }
+
+        turn ^= turn;
+
+        //if (l > r)
+            //announceWinner();
     }
 
     private BorderPane createMessageToast(String message) {
