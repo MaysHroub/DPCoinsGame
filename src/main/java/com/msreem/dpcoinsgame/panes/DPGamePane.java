@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
@@ -22,14 +23,18 @@ import java.util.Arrays;
 
 public class DPGamePane extends StackPane {
 
+    private DPGameLogic dpLogic;
+
+
     public DPGamePane() {
         init();
     }
 
-
     private void init() {
-
-        // TO-DO: create a pane containing a text field with the DP table
+        int[] coinValues = NavigationManager.getInstance().getGameState().getCoinValues();
+        dpLogic = new DPGameLogic(coinValues);
+        dpLogic.calculateTable();
+        dpLogic.calculatePlayersCoins();
 
         Label robotTurnL = new Label("Mario's Turn");
         ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
@@ -53,10 +58,6 @@ public class DPGamePane extends StackPane {
 
         BorderPane.setMargin(greyRobotVB, new Insets(0, 0, 0, 100));
         BorderPane.setMargin(redRobotVB, new Insets(0, 100, 0, 0));
-
-//        Coin[] coins = new Coin[20];
-//        for (int i = 0; i < 20; i++)
-//            coins[i] = new Coin(i+1);
 
         HBox coinsHB = new HBox(10);
         //coinsHB.getChildren().addAll(Arrays.asList(coins));
@@ -113,7 +114,7 @@ public class DPGamePane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
-        BorderPane toast = createMessageToast("Based on random selection, the Grey Robot is selected to start first");
+        BorderPane toast = createMessageToast("Grey Robot is selected to start first");
         BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.");
 
         getChildren().addAll(layout, instructionToast);
