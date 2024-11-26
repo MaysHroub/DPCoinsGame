@@ -135,8 +135,8 @@ public class DPGamePane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
-        BorderPane toast = createMessageToast("Grey Robot is selected to start first");
-        BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.");
+        //BorderPane toast = createMessageToast("Grey Robot is selected to start first", null);
+        BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.", null);
 
         getChildren().addAll(layout, instructionToast);
 
@@ -181,13 +181,13 @@ public class DPGamePane extends StackPane {
 //            img = luigiWinImg;
         }
 
-        BorderPane toast = createMessageToast(message);
+        BorderPane toast = createMessageToast(message, null);
         getChildren().add(toast);
     }
 
-    private BorderPane createMessageToast(String message) {
+    private BorderPane createMessageToast(String message, ImageView img) {
         BorderPane messageBP = new BorderPane();
-        messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.94); -fx-background-radius: 10;");
+        messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");
 
         Label messageL = new Label(message);
         messageL.setWrapText(true);
@@ -195,13 +195,22 @@ public class DPGamePane extends StackPane {
         messageL.setStyle("-fx-font-size: 16;");
 
         Button closeBtn = new Button("CLOSE");
-        closeBtn.setStyle("-fx-background-color: transparent;");
+        closeBtn.setId("back-button");
+        closeBtn.setOnAction(e -> {
+            messageBP.setDisable(true);
+            messageBP.setVisible(false);
+        });
 
-        messageBP.setCenter(messageL);
+        if (img == null)
+            messageBP.setCenter(messageL);
+        else {
+            messageBP.setCenter(img);
+            messageBP.setBottom(messageL);
+        }
         messageBP.setTop(closeBtn);
         messageBP.setPadding(new Insets(10));
-        messageBP.maxWidthProperty().bind(widthProperty().divide(3));
-        messageBP.maxHeightProperty().bind(heightProperty().divide(3));
+        messageBP.maxWidthProperty().bind(widthProperty().divide(2));
+        messageBP.maxHeightProperty().bind(heightProperty().divide(2));
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 
