@@ -162,8 +162,24 @@ public class DPGamePane extends StackPane {
 
         turn ^= turn;
 
-        //if (l > r)
-            //announceWinner();
+        if (l > r)
+            announceWinner();
+    }
+
+    private void announceWinner() {
+        String message = "DRAW Between Robot and Player!";
+//        ImageView img = drawImg;
+        if (playerOneScore > playerTwoScore) {
+            message = "Robot has WON!";
+//            img = marioWinImg;
+        }
+        else if (playerOneScore < playerTwoScore) {
+            message = "Player has WON!";
+//            img = luigiWinImg;
+        }
+
+        BorderPane toast = createMessageToast(message);
+        getChildren().add(toast);
     }
 
     private BorderPane createMessageToast(String message) {
