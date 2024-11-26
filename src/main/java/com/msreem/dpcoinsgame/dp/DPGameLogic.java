@@ -15,6 +15,7 @@ public class DPGameLogic {
         int n = coins.length;
         int[] cum = new int[n+1];
         dpTable = new int[n][n];
+        directions = new char[n][n];
 
         for (int i = 0; i < n; i++)
             cum[i+1] = cum[i] + coins[i];
