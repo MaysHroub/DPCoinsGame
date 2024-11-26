@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59d454e9-7ba3-42a9-a3fe-0056f1b383e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/draw.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/luigi-win.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/mario-win.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/dp/DPGameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoPlayerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msreem/dpcoinsgame/panes/TwoPlayerPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,10 +56,10 @@
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
     "Application.Launcher.executor": "Run",
-    "Application.Test.executor": "Run",
+    "Application.Test.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "two-player-logic",
+    "git-widget-placeholder": "dp-logic",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ismae/IdeaProjects/DPCoinsGame/src/main/resources/images",
     "settings.editor.selected.configurable": "preferences.editor"
@@ -81,7 +77,7 @@
       <recent name="C:\Users\ismae\IdeaProjects\DPCoinsGame\src\main\java\com\msreem\dpcoinsgame" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Launcher">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.msreem.dpcoinsgame.Launcher" />
       <module name="DPCoinsGame" />
@@ -110,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Launcher" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Launcher" />
       </list>
     </recent_temporary>
   </component>
