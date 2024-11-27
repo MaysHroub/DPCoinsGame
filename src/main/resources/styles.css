@@ -10,6 +10,13 @@
     -fx-background-color: #141414;
 }
 
+.text-area {
+   -fx-font-family: 'Lucida Console';
+   -fx-font-size: 16;
+   -fx-line-spacing: 10;
+   -fx-font-weight: normal;
+}
+
 .label {
     -fx-text-fill: white;
     -fx-font-size: 22;
