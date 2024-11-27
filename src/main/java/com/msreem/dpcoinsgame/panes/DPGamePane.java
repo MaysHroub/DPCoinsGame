@@ -132,6 +132,7 @@ public class DPGamePane extends StackPane {
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         resetBtn.setOnAction(e -> resetGame());
+        dpTableBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.DP_TABLE));
         nextMoveBtn.setOnAction(e -> playNextMove());
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
