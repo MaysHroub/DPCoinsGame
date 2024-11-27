@@ -29,7 +29,7 @@ public class RulesPane extends VBox {
         titleL.setId("head1");
 
         rulesL.setWrapText(true);
-        rulesL.setId("long-text-label");
+        rulesL.setId("new-font-label");
 
         Button backBtn = new Button("BACK");
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
