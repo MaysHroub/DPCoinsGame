@@ -24,6 +24,7 @@ public class DPGamePane extends StackPane {
     private TableView<Label> robotCoinsTable, playerCoinsTable;
     private Label turnL, robotScoreL, playerScoreL;
     private ImageView robotWinImg, playerWinImg, drawImg;
+    private Button nextMoveBtn;
     private DPGameLogic dpLogic;
     private Coin[] coins;
     private int i1, i2;
@@ -126,8 +127,8 @@ public class DPGamePane extends StackPane {
 
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button(" HOME "),
-                nextMoveBtn = new Button("NEXT MOVE"),
                 dpTableBtn = new Button("SHOW DP TABLE");
+        nextMoveBtn = new Button("NEXT MOVE");
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         nextMoveBtn.setOnAction(e -> playNextMove());
@@ -188,8 +189,10 @@ public class DPGamePane extends StackPane {
         }
 
         int n = dpLogic.getCoins().length;
-        if (i1 == n/2 && i2 == n/2)
+        if (i1 == n/2 && i2 == n/2) {
             announceWinner();
+            nextMoveBtn.setDisable(true);
+        }
     }
 
     private void announceWinner() {
