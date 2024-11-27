@@ -26,7 +26,6 @@ public class DPGamePane extends StackPane {
     private ImageView robotWinImg, playerWinImg, drawImg;
     private DPGameLogic dpLogic;
     private Coin[] coins;
-    private int l, r;
     private int i1, i2;
     private int turn;
     private int robotScore, playerScore;
@@ -43,7 +42,6 @@ public class DPGamePane extends StackPane {
         dpLogic.calculatePlayersCoins();
 
         int n = coinValues.length;
-        l = 0; r = n-1;
 
         turnL = new Label("Robot's Turn");
         robotScoreL = new Label("SCORE: " + robotScore);
@@ -168,8 +166,6 @@ public class DPGamePane extends StackPane {
 
     private void playNextMove() {
         int coinIdx = turn == 0 ? dpLogic.getPlayerOneCoins()[i1++] : dpLogic.getPlayerTwoCoins()[i2++];
-        if (coinIdx == l) l++;
-        else r--;
         int coinVal = dpLogic.getCoins()[coinIdx];
         Label coinL = new Label("Coin " + coinVal);
         coins[coinIdx].setDisable(true);
@@ -191,7 +187,8 @@ public class DPGamePane extends StackPane {
             turnL.setText("Robot's turn");
         }
 
-        if (l > r)
+        int n = dpLogic.getCoins().length;
+        if (i1 == n/2 && i2 == n/2)
             announceWinner();
     }
 
