@@ -131,6 +131,7 @@ public class DPGamePane extends StackPane {
         nextMoveBtn = new Button("NEXT MOVE");
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        resetBtn.setOnAction(e -> resetGame());
         nextMoveBtn.setOnAction(e -> playNextMove());
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
@@ -163,6 +164,29 @@ public class DPGamePane extends StackPane {
 
         Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-200, robotVB.getTranslateX());
         Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+200, playerVB.getTranslateX());
+    }
+
+    private void resetGame() {
+        turnL.setText(((turn == 0) ? "ROBOT" : "MAGNUS") + "'s Turn");
+
+        nextMoveBtn.setDisable(false);
+
+        robotCoinsTable.getItems().clear();
+        robotCoinsTable.refresh();
+        playerCoinsTable.getItems().clear();
+        playerCoinsTable.refresh();
+
+        i1 = 0; i2 = 0;
+
+        for (Coin coin : coins) {
+            coin.setStyle("-fx-background-color: gold; -fx-border-color: orange;");
+            coin.setDisable(false);
+        }
+
+        robotScore = 0;
+        robotScoreL.setText("SCORE: 0");
+        playerScore = 0;
+        playerScoreL.setText("SCORE: 0");
     }
 
     private void playNextMove() {
