@@ -15,10 +15,8 @@ public class Coin extends StackPane {
     public Coin(int value, int index) {
         this.value = value;
         this.index = index;
-        Circle circle = new Circle(22);
-        circle.setStyle("-fx-fill: gold; -fx-stroke: orange; -fx-stroke-width: 3; -fx-text-alignment: center;");
         Label label = new Label(value + "");
-        getChildren().addAll(circle, label);
+        getChildren().addAll(label);
         setId("coin");
     }
 
