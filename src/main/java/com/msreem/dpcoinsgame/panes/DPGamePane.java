@@ -132,6 +132,8 @@ public class DPGamePane extends StackPane {
         layout.setBottom(lowerLayout);
         layout.setPadding(new Insets(30));
 
+        BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
+
         //BorderPane toast = createMessageToast("Grey Robot is selected to start first", null);
         BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.", null);
 
@@ -151,7 +153,7 @@ public class DPGamePane extends StackPane {
 
         if (turn == 0) {
             // colour the coin to be the same as the robot colour and disable it maybe...
-            coins[coinIdx].setStyle("-fx-background-color: green;");
+            coins[coinIdx].setStyle("-fx-background-color: lightgrey;");
             robotCoinsTable.getItems().add(coinL);
             robotScore += coinVal;
             robotScoreL.setText("SCORE: " + robotScore);
@@ -160,7 +162,7 @@ public class DPGamePane extends StackPane {
         }
         else {
             // colour the coin to be the same as the player colour and disable it maybe...
-            coins[coinIdx].setStyle("-fx-background-color: red;");
+            coins[coinIdx].setStyle("-fx-background-color: brown;");
             playerCoinsTable.getItems().add(coinL);
             playerScore += coinVal;
             playerScoreL.setText("SCORE: " + playerScore);
