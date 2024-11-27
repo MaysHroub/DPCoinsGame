@@ -4,8 +4,6 @@ import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.util.Animation;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -23,14 +21,14 @@ import java.util.Arrays;
 
 public class DPGamePane extends StackPane {
 
-    private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
-    private Label playerTurnL, playerOneScoreL, playerTwoScoreL;
+    private TableView<Label> robotCoinsTable, playerCoinsTable;
+    private Label turnL, robotScoreL, playerScoreL;
     private DPGameLogic dpLogic;
     private Coin[] coins;
     private int l, r;
     private int i1, i2;
     private int turn;
-    private int playerOneScore, playerTwoScore;
+    private int robotScore, playerScore;
 
 
     public DPGamePane() {
@@ -46,33 +44,33 @@ public class DPGamePane extends StackPane {
         int n = coinValues.length;
         l = 0; r = n-1;
 
-        playerTurnL = new Label("Mario's Turn");
-        playerOneScoreL = new Label("SCORE: " + playerOneScore);
-        playerTwoScoreL = new Label("SCORE: " + playerTwoScore);
-        playerOneScoreL.setStyle("-fx-font-size: 18;");
-        playerTwoScoreL.setStyle("-fx-font-size: 18;");
+        turnL = new Label("Robot's Turn");
+        robotScoreL = new Label("SCORE: " + robotScore);
+        playerScoreL = new Label("SCORE: " + playerScore);
+        robotScoreL.setStyle("-fx-font-size: 18;");
+        playerScoreL.setStyle("-fx-font-size: 18;");
 
         ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
-                redRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\red-robot-fight.png");
+                nerdPlayerImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\nerd-player-fight.png");
 
-        greyRobotImg.setFitHeight(180);
+        greyRobotImg.setFitHeight(170);
         greyRobotImg.setPreserveRatio(true);
-        redRobotImg.setFitHeight(180);
-        redRobotImg.setPreserveRatio(true);
+        nerdPlayerImg.setFitHeight(170);
+        nerdPlayerImg.setPreserveRatio(true);
 
 
-        VBox greyRobotVB = new VBox(20, new Label("ROBOT ALPHA"), greyRobotImg),
-                redRobotVB = new VBox(20, new Label("ROBOT OMEGA"), redRobotImg);
-        greyRobotVB.setAlignment(Pos.CENTER);
-        redRobotVB.setAlignment(Pos.CENTER);
+        VBox robotVB = new VBox(20, new Label("ROBOT"), greyRobotImg),
+                playerVB = new VBox(20, new Label("MAGNUS"), nerdPlayerImg);
+        robotVB.setAlignment(Pos.CENTER);
+        playerVB.setAlignment(Pos.CENTER);
 
         BorderPane upperLayout = new BorderPane();
-        upperLayout.setCenter(playerTurnL);
-        upperLayout.setLeft(greyRobotVB);
-        upperLayout.setRight(redRobotVB);
+        upperLayout.setCenter(turnL);
+        upperLayout.setLeft(robotVB);
+        upperLayout.setRight(playerVB);
 
-        BorderPane.setMargin(greyRobotVB, new Insets(0, 0, 0, 100));
-        BorderPane.setMargin(redRobotVB, new Insets(0, 100, 0, 0));
+        BorderPane.setMargin(robotVB, new Insets(0, 0, 0, 100));
+        BorderPane.setMargin(playerVB, new Insets(0, 100, 0, 0));
 
 
         coins = new Coin[n];
@@ -85,23 +83,23 @@ public class DPGamePane extends StackPane {
         coinsHB.setStyle("-fx-border-color: white;");
 
 
-        playerOneCoinsTable = new TableView<>();
-        playerOneCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> greyRobotCol = new TableColumn<>("GREY ROBOT Coins");
-        greyRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
-        greyRobotCol.setPrefWidth(200);
-        greyRobotCol.setSortable(false);
-        playerOneCoinsTable.getColumns().add(greyRobotCol);
-        playerOneCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        robotCoinsTable = new TableView<>();
+        robotCoinsTable.setPrefHeight(180);
+        TableColumn<Label, String> robotCol = new TableColumn<>("ROBOT Coins");
+        robotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
+        robotCol.setPrefWidth(200);
+        robotCol.setSortable(false);
+        robotCoinsTable.getColumns().add(robotCol);
+        robotCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        playerTwoCoinsTable = new TableView<>();
-        playerTwoCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> redRobotCol = new TableColumn<>("RED ROBOT Coins");
-        redRobotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
-        redRobotCol.setPrefWidth(200);
-        redRobotCol.setSortable(false);
-        playerTwoCoinsTable.getColumns().add(redRobotCol);
-        playerTwoCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        playerCoinsTable = new TableView<>();
+        playerCoinsTable.setPrefHeight(180);
+        TableColumn<Label, String> playerCol = new TableColumn<>("RED ROBOT Coins");
+        playerCol.setCellValueFactory(new PropertyValueFactory<>("text"));
+        playerCol.setPrefWidth(200);
+        playerCol.setSortable(false);
+        playerCoinsTable.getColumns().add(playerCol);
+        playerCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 
         Button resetBtn = new Button("RESET"),
@@ -117,16 +115,16 @@ public class DPGamePane extends StackPane {
         VBox buttonsVB = new VBox(30, nextMoveBtn, dpTableBtn, lowerBtnsHB);
         buttonsVB.setAlignment(Pos.CENTER);
 
-        VBox playerOneCoinsVB = new VBox(20, playerOneScoreL, playerOneCoinsTable);
-        playerOneCoinsVB.setAlignment(Pos.CENTER);
+        VBox robotCoinsVB = new VBox(20, robotScoreL, robotCoinsTable);
+        robotCoinsVB.setAlignment(Pos.CENTER);
 
-        VBox playerTwoCoinsVB = new VBox(20, playerTwoScoreL, playerTwoCoinsTable);
-        playerTwoCoinsVB.setAlignment(Pos.CENTER);
+        VBox playerCoinsVB = new VBox(20, playerScoreL, playerCoinsTable);
+        playerCoinsVB.setAlignment(Pos.CENTER);
 
         BorderPane lowerLayout = new BorderPane();
         lowerLayout.setCenter(buttonsVB);
-        lowerLayout.setLeft(playerOneCoinsVB);
-        lowerLayout.setRight(playerTwoCoinsVB);
+        lowerLayout.setLeft(robotCoinsVB);
+        lowerLayout.setRight(playerCoinsVB);
 
         BorderPane layout = new BorderPane();
         layout.setTop(upperLayout);
@@ -139,30 +137,36 @@ public class DPGamePane extends StackPane {
 
         getChildren().addAll(layout, instructionToast);
 
-        Animation.installTranslateXTransition(greyRobotVB, 1, greyRobotVB.getTranslateX()-200, greyRobotVB.getTranslateX());
-        Animation.installTranslateXTransition(redRobotVB, 1, redRobotVB.getTranslateX()+200, redRobotVB.getTranslateX());
+        Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-200, robotVB.getTranslateX());
+        Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+200, playerVB.getTranslateX());
     }
 
     private void playNextMove() {
         int coinIdx = turn == 0 ? dpLogic.getPlayerOneCoins()[i1++] : dpLogic.getPlayerTwoCoins()[i2++];
         if (coinIdx == l) l++;
         else r--;
-        Label coin = new Label("Coin " + coins[coinIdx].getValue());
+        int coinVal = dpLogic.getCoins()[coinIdx];
+        Label coinL = new Label("Coin " + coinVal);
+        coins[coinIdx].setDisable(true);
 
         if (turn == 0) {
             // colour the coin to be the same as the robot colour and disable it maybe...
-            playerOneCoinsTable.getItems().add(coin);
-            playerOneScore += coins[coinIdx].getValue();
-            playerOneScoreL.setText("SCORE: " + playerOneScore);
+            coins[coinIdx].setStyle("-fx-background-color: green;");
+            robotCoinsTable.getItems().add(coinL);
+            robotScore += coinVal;
+            robotScoreL.setText("SCORE: " + robotScore);
+            turn = 1;
+            turnL.setText("Player's turn");
         }
         else {
             // colour the coin to be the same as the player colour and disable it maybe...
-            playerTwoCoinsTable.getItems().add(coin);
-            playerTwoScore += coins[coinIdx].getValue();
-            playerTwoScoreL.setText("SCORE: " + playerTwoScore);
+            coins[coinIdx].setStyle("-fx-background-color: red;");
+            playerCoinsTable.getItems().add(coinL);
+            playerScore += coinVal;
+            playerScoreL.setText("SCORE: " + playerScore);
+            turn = 0;
+            turnL.setText("Robot's turn");
         }
-
-        turn ^= 1;
 
         if (l > r)
             announceWinner();
@@ -171,11 +175,11 @@ public class DPGamePane extends StackPane {
     private void announceWinner() {
         String message = "DRAW Between Robot and Player!";
 //        ImageView img = drawImg;
-        if (playerOneScore > playerTwoScore) {
+        if (robotScore > playerScore) {
             message = "Robot has WON!";
 //            img = marioWinImg;
         }
-        else if (playerOneScore < playerTwoScore) {
+        else if (robotScore < playerScore) {
             message = "Player has WON!";
 //            img = luigiWinImg;
         }
