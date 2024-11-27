@@ -8,5 +8,6 @@ public enum PaneId {
     RANDOM_INPUT,
     PLAYERS_NAME_INPUT,
     PLAYERS_GAME,
-    DP_GAME
+    DP_GAME,
+    DP_TABLE
 }
