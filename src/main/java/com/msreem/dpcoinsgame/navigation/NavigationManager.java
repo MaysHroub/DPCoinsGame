@@ -39,6 +39,7 @@ public class NavigationManager {
             case PLAYERS_NAME_INPUT -> scene.setRoot(new PlayersNamePane());
             case PLAYERS_GAME -> scene.setRoot(new TwoPlayerPane());
             case DP_GAME -> scene.setRoot(new DPGamePane());
+            case DP_TABLE -> scene.setRoot(new DPTablePane());
         }
     }
 
