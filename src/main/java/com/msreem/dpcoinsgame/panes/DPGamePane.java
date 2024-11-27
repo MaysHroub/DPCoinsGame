@@ -23,6 +23,7 @@ public class DPGamePane extends StackPane {
 
     private TableView<Label> robotCoinsTable, playerCoinsTable;
     private Label turnL, robotScoreL, playerScoreL;
+    private ImageView robotWinImg, playerWinImg, drawImg;
     private DPGameLogic dpLogic;
     private Coin[] coins;
     private int l, r;
@@ -52,7 +53,16 @@ public class DPGamePane extends StackPane {
 
         ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
                 nerdPlayerImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\nerd-player-fight.png");
+        robotWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\robot-win.jpg");
+        playerWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\nerd-win.jpg");
+        drawImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\robot-nerd-draw.jpg");
 
+        robotWinImg.setFitHeight(190);
+        robotWinImg.setPreserveRatio(true);
+        playerWinImg.setFitHeight(190);
+        playerWinImg.setPreserveRatio(true);
+        drawImg.setFitHeight(190);
+        drawImg.setPreserveRatio(true);
         greyRobotImg.setFitHeight(170);
         greyRobotImg.setPreserveRatio(true);
         nerdPlayerImg.setFitHeight(170);
@@ -148,7 +158,6 @@ public class DPGamePane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        //BorderPane toast = createMessageToast("Grey Robot is selected to start first", null);
         BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.", null);
 
         getChildren().addAll(layout, instructionToast);
@@ -190,17 +199,17 @@ public class DPGamePane extends StackPane {
 
     private void announceWinner() {
         String message = "DRAW Between Robot and Player!";
-//        ImageView img = drawImg;
+        ImageView img = drawImg;
         if (robotScore > playerScore) {
             message = "Robot has WON!";
-//            img = marioWinImg;
+            img = robotWinImg;
         }
         else if (robotScore < playerScore) {
             message = "Player has WON!";
-//            img = luigiWinImg;
+            img = playerWinImg;
         }
 
-        BorderPane toast = createMessageToast(message, null);
+        BorderPane toast = createMessageToast(message, img);
         getChildren().add(toast);
     }
 
