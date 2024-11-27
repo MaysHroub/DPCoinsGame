@@ -83,7 +83,7 @@
     -fx-font-size: 18;
 }
 
-#long-text-label {
+#new-font-label {
     -fx-font-family: 'Public Pixel';
     -fx-font-size: 16;
     -fx-text-fill: grey;
