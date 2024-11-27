@@ -91,15 +91,29 @@ public class DPGamePane extends StackPane {
         robotCol.setSortable(false);
         robotCoinsTable.getColumns().add(robotCol);
         robotCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        robotCoinsTable.getStylesheets().add(
+                "data:text/css," +
+                ".table-view .column-header {" +
+                "  -fx-background-color: darkgrey;" +
+                "  -fx-text-fill: white;" +
+                "}"
+        );
 
         playerCoinsTable = new TableView<>();
         playerCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerCol = new TableColumn<>("RED ROBOT Coins");
+        TableColumn<Label, String> playerCol = new TableColumn<>("PLAYER Coins");
         playerCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerCol.setPrefWidth(200);
         playerCol.setSortable(false);
         playerCoinsTable.getColumns().add(playerCol);
         playerCoinsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        playerCoinsTable.getStylesheets().add(
+                "data:text/css," +
+                        ".table-view .column-header {" +
+                        "  -fx-background-color: brown;" +
+                        "  -fx-text-fill: white;" +
+                        "}"
+        );
 
 
         Button resetBtn = new Button("RESET"),
@@ -153,7 +167,7 @@ public class DPGamePane extends StackPane {
 
         if (turn == 0) {
             // colour the coin to be the same as the robot colour and disable it maybe...
-            coins[coinIdx].setStyle("-fx-background-color: lightgrey;");
+            coins[coinIdx].setStyle("-fx-background-color: #bfbfbf; -fx-border-color: lightgrey;");
             robotCoinsTable.getItems().add(coinL);
             robotScore += coinVal;
             robotScoreL.setText("SCORE: " + robotScore);
@@ -162,7 +176,7 @@ public class DPGamePane extends StackPane {
         }
         else {
             // colour the coin to be the same as the player colour and disable it maybe...
-            coins[coinIdx].setStyle("-fx-background-color: brown;");
+            coins[coinIdx].setStyle("-fx-background-color: #f5b964;");
             playerCoinsTable.getItems().add(coinL);
             playerScore += coinVal;
             playerScoreL.setText("SCORE: " + playerScore);
