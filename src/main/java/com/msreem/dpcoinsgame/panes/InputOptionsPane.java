@@ -26,9 +26,7 @@ public class InputOptionsPane extends BorderPane {
         Label alertL = new Label(),
                 label = new Label("SELECT YOUR INPUT METHOD"),
                 infoL = new Label("""
-                        Accepted file format is numberOfCoins (even), then coin values separated by comma.\
-                        
-                        Ex: 4,10,2,33,19\
+                        Accepted file format is numberOfCoins (even), then coin values separated by comma. Ex: 4,10,2,33,19\
                         
                         Note: if numberOfCoins doesn't equal the actual number of coin values, random values are placed.""");
 
