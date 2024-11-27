@@ -111,7 +111,7 @@ public class DPGamePane extends StackPane {
 
         playerCoinsTable = new TableView<>();
         playerCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerCol = new TableColumn<>("PLAYER Coins");
+        TableColumn<Label, String> playerCol = new TableColumn<>("MAGNUS Coins");
         playerCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerCol.setPrefWidth(200);
         playerCol.setSortable(false);
@@ -158,7 +158,7 @@ public class DPGamePane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the robots' next moves in the game.", null);
+        BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the next moves in the game.", null);
 
         getChildren().addAll(layout, instructionToast);
 
@@ -175,16 +175,14 @@ public class DPGamePane extends StackPane {
         coins[coinIdx].setDisable(true);
 
         if (turn == 0) {
-            // colour the coin to be the same as the robot colour and disable it maybe...
             coins[coinIdx].setStyle("-fx-background-color: #bfbfbf; -fx-border-color: lightgrey;");
             robotCoinsTable.getItems().add(coinL);
             robotScore += coinVal;
             robotScoreL.setText("SCORE: " + robotScore);
             turn = 1;
-            turnL.setText("Player's turn");
+            turnL.setText("MAGNUS' turn");
         }
         else {
-            // colour the coin to be the same as the player colour and disable it maybe...
             coins[coinIdx].setStyle("-fx-background-color: #f5b964;");
             playerCoinsTable.getItems().add(coinL);
             playerScore += coinVal;
@@ -198,14 +196,14 @@ public class DPGamePane extends StackPane {
     }
 
     private void announceWinner() {
-        String message = "DRAW Between Robot and Player!";
+        String message = "DRAW Between Robot and MAGNUS!";
         ImageView img = drawImg;
         if (robotScore > playerScore) {
             message = "Robot has WON!";
             img = robotWinImg;
         }
         else if (robotScore < playerScore) {
-            message = "Player has WON!";
+            message = "MAGNUS has WON!";
             img = playerWinImg;
         }
 
