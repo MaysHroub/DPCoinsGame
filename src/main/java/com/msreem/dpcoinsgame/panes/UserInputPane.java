@@ -22,7 +22,9 @@ public class UserInputPane extends BorderPane {
     }
 
     private void init() {
-        Label promptLabel = new Label("Enter a group of even number of coins\n(comma separated and up to 20 coins)");
+        Label promptLabel = new Label("Enter a group of even number of coins\n" +
+                "(comma separated and up to 20 coins.\n" +
+                "Coin values are within 1 and 1000)");
         alertLabel = new Label();
         alertLabel.setId("alert");
         TextField inputTF = new TextField();
@@ -74,8 +76,12 @@ public class UserInputPane extends BorderPane {
         for (int i = 0; i < tokens.length; i++) {
             try {
                 coins[i] = Integer.parseInt(tokens[i]);
+                if (coins[i] <= 0 || coins[i] > 1000) {
+                    alertLabel.setText("Coin value range must be between 1 and 1000.");
+                    return null;
+                }
             } catch (NumberFormatException e) {
-                alertLabel.setText("Please enter only integers :/");
+                alertLabel.setText("Please enter only integers.");
                 return null;
             }
         }
