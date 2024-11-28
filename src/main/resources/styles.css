@@ -133,7 +133,7 @@
 
 #coin:disabled .label {
     -fx-opacity: 1.0;
-    -fx-text-fill: wheat;
+    -fx-text-fill: white;
 }
 
 #image-with-border {
