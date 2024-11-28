@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

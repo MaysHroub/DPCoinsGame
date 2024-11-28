@@ -1,4 +1,4 @@
-package com.msreem.dpcoinsgame.util;
+package com.msreem.dpcoinsgame.animation;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
