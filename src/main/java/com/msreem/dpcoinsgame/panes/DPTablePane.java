@@ -40,10 +40,12 @@ public class DPTablePane extends BorderPane {
         for (int i = 0; i < dpGameLogic.getCoins().length; i++)
             strbld.append(String.format("%4d\t", dpGameLogic.getCoins()[i]));
 
-        strbld.append("\n\n");
+        strbld.append("\n\t");
+        strbld.append("--------".repeat(dpGameLogic.getCoins().length));
+        strbld.append("\n\t|\n");
 
         for (int i = 0; i < dp.length; i++) {
-            strbld.append(String.format("%4d\t", dpGameLogic.getCoins()[i]));
+            strbld.append(String.format("%4d\t|", dpGameLogic.getCoins()[i]));
             for (int j = 0; j < dp[i].length; j++) {
                 if (i == j)
                     strbld.append(String.format("%4d\t", dp[i][j]));
@@ -52,7 +54,7 @@ public class DPTablePane extends BorderPane {
                 else
                     strbld.append("\t");
             }
-            strbld.append("\n\n");
+            strbld.append("\n\t|\n");
         }
         dpTableTA.setText(strbld.toString());
 
