@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+// This is the main class which launches the application.
 public class Launcher extends Application {
+
     @Override
     public void start(Stage stage) {
         Scene scene = new Scene(new StartPane(), 1200, 600);

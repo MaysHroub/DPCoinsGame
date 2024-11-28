@@ -11,6 +11,7 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+// Main pane, the first one showed to the user, displays the two game options: two-player and pro-vs-computer.
 public class StartPane extends BorderPane {
 
     public StartPane() {
@@ -75,7 +76,5 @@ public class StartPane extends BorderPane {
         Animation.installFadeTransition(buttonsHB, 1);
         Animation.installTranslateYTransition(rulesBtn, .8, rulesBtn.getTranslateY()+50, rulesBtn.getTranslateY());
     }
-
-
 
 }

@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+// Pane for displaying the coin game for the 'two-player' option.
 public class PlayersNamePane extends BorderPane {
 
     public PlayersNamePane() {
@@ -74,6 +75,7 @@ public class PlayersNamePane extends BorderPane {
         Animation.installTranslateXTransition(playerTwoVB, .8, playerTwoVB.getTranslateX()+70, playerTwoVB.getTranslateX());
     }
 
+    // Validates the input entered by the user in the text-fields.
     private boolean isInputValid(TextField inputTF, Label alertLabel) {
         if (inputTF.getText() == null || inputTF.getText().isEmpty()) {
             alertLabel.setText("Enter your names in the text field.");

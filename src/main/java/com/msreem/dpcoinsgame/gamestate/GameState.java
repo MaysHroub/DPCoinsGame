@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.gamestate;
 
+// To preserve the values of players' names and coins across panes.
 public class GameState {
 
     private String[] playerNames;

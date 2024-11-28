@@ -14,10 +14,10 @@ import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
 
+// Pane for the random input option.
 public class RandomInputPane extends BorderPane {
 
     private Label alertLabel;
-
 
     public RandomInputPane() {
         init();
@@ -64,6 +64,7 @@ public class RandomInputPane extends BorderPane {
         Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+50, nextBtn.getTranslateY());
     }
 
+    // Generates random coin values for given number of coins.
     private int[] generateCoins(String numberOfCoins) {
         if (numberOfCoins == null || numberOfCoins.isEmpty()) {
             alertLabel.setText("Please enter a number");

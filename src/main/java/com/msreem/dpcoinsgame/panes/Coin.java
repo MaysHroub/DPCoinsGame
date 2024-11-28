@@ -6,11 +6,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+// Represents a coin with a value, index, and a visual label for display.
 public class Coin extends StackPane {
 
-    private int value;
-    private int index;
-
+    private final int value;
+    private final int index;
 
     public Coin(int value, int index) {
         this.value = value;

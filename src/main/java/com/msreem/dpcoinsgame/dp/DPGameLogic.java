@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.dp;
 
+// Encapsulates the DP logic of the game
 public class DPGameLogic {
 
     private int[] coins, playerOneCoinIndices, playerTwoCoinIndices;
@@ -10,8 +11,8 @@ public class DPGameLogic {
         setCoins(coins);
     }
 
-
-    public void calculateTable() {
+    // Build DP and directions table.
+    public void buildTables() {
         int n = coins.length;
         int[] cum = new int[n+1];
         dpTable = new int[n][n];
@@ -41,6 +42,7 @@ public class DPGameLogic {
             }
     }
 
+    // Identifies coins selected by each player.
     public void calculatePlayersCoins() {
         int n = coins.length;
         playerOneCoinIndices = new int[n/2];

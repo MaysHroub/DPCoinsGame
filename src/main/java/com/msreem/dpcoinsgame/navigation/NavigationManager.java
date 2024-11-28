@@ -6,6 +6,7 @@ import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.scene.Scene;
 
 
+// Handles navigation between panes functionality.
 public class NavigationManager {
 
     private static NavigationManager instance;
@@ -28,7 +29,8 @@ public class NavigationManager {
         }
     }
 
-    // TO-DO: use a hashtable for choosing the pane instead of creating it
+    // TO-DO: use a hashtable for choosing the pane instead of creating it.
+    // Navigates to the pane with given id.
     public void navigateTo(PaneId id) {
         switch (id) {
             case START -> scene.setRoot(new StartPane());

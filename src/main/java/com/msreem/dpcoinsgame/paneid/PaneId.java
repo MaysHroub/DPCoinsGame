@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.paneid;
 
+// Encapsulates IDs of the panes in the program.
 public enum PaneId {
     START,
     RULES,
@@ -9,5 +10,4 @@ public enum PaneId {
     PLAYERS_NAME_INPUT,
     PLAYERS_GAME,
     DP_GAME,
-    DP_TABLE
 }

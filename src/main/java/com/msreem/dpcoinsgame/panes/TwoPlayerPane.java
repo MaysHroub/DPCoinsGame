@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
 
+// Pane for the 'two-player' game option.
 public class TwoPlayerPane extends StackPane {
 
     private TableView<Label> playerOneCoinsTable, playerTwoCoinsTable;
@@ -25,7 +26,6 @@ public class TwoPlayerPane extends StackPane {
     private Coin[] coins;
     private int l, r;
     private int playerOneScore, playerTwoScore;
-
 
     public TwoPlayerPane() {
         init();
@@ -152,6 +152,7 @@ public class TwoPlayerPane extends StackPane {
         Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+100, playerTwoVB.getTranslateX());
     }
 
+    // Resets the current match.
     private void resetGame() {
         playerTurnL.setText(playerNames[playerTurn] + "'s Turn");
 
@@ -176,6 +177,7 @@ public class TwoPlayerPane extends StackPane {
         getChildren().add(toast);
     }
 
+    // Updates scores and coins according to the player's move in either turns.
     private void updateScore(int indexOfClickedCoin) {
         // remove the coin, enable the adjacent one, update score/table of current player and change turns
         coins[indexOfClickedCoin].setDisable(true);
@@ -206,6 +208,7 @@ public class TwoPlayerPane extends StackPane {
         playerTurnL.setText(playerNames[playerTurn] + "'s Turn");
     }
 
+    // Displays a toast to show the winner.
     private void announceWinner() {
         String message = "DRAW Between The Two Players!";
         ImageView img = drawImg;
@@ -222,6 +225,7 @@ public class TwoPlayerPane extends StackPane {
         getChildren().add(toast);
     }
 
+    // Returns a pane containing given message and image, representing a toast message.
     private BorderPane createMessageToast(String message, ImageView img) {
         BorderPane messageBP = new BorderPane();
         messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");

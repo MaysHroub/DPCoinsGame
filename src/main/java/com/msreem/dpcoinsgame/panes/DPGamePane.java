@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
 
+// Pane for displaying the coin game with the DP approach, for 'pro vs. computer' option.
 public class DPGamePane extends StackPane {
 
     private TableView<Label> robotCoinsTable, playerCoinsTable;
@@ -31,7 +32,6 @@ public class DPGamePane extends StackPane {
     private int turn;
     private int robotScore, playerScore;
 
-
     public DPGamePane() {
         init();
     }
@@ -43,7 +43,7 @@ public class DPGamePane extends StackPane {
 
         int[] coinValues = NavigationManager.getInstance().getGameState().getCoinValues();
         dpLogic = new DPGameLogic(coinValues);
-        dpLogic.calculateTable();
+        dpLogic.buildTables();
         dpLogic.calculatePlayersCoins();
 
         int n = coinValues.length;
@@ -176,6 +176,7 @@ public class DPGamePane extends StackPane {
         Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+100, playerVB.getTranslateX());
     }
 
+    // Resets the current match.
     private void resetGame() {
         turnL.setText(((turn == 0) ? "BMO" : "MAGNUS") + "'s Turn");
 
@@ -199,6 +200,7 @@ public class DPGamePane extends StackPane {
         playerScoreL.setText("SCORE: 0");
     }
 
+    // Updates scores and coins according to the player's move in either turns.
     private void playNextMove() {
         int coinIdx = turn == 0 ? dpLogic.getPlayerOneCoins()[i1++] : dpLogic.getPlayerTwoCoins()[i2++];
         int coinVal = dpLogic.getCoins()[coinIdx];
@@ -229,6 +231,7 @@ public class DPGamePane extends StackPane {
         }
     }
 
+    // Displays a toast to show the winner.
     private void announceWinner() {
         String message = "DRAW Between BMO and MAGNUS!";
         ImageView img = drawImg;
@@ -245,6 +248,7 @@ public class DPGamePane extends StackPane {
         getChildren().add(toast);
     }
 
+    // Returns a pane containing given message and image, representing a toast message.
     private BorderPane createMessageToast(String message, ImageView img) {
         BorderPane messageBP = new BorderPane();
         messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");

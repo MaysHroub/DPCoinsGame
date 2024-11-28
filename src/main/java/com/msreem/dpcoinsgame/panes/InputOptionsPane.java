@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Pane for displaying the three input options of the game (random, manual, and from file).
 public class InputOptionsPane extends BorderPane {
 
     public InputOptionsPane() {
@@ -99,6 +100,7 @@ public class InputOptionsPane extends BorderPane {
         Animation.installTranslateYTransition(generateRandomBtn, 1, loadFromFileBtn.getTranslateY()+50, loadFromFileBtn.getTranslateY());
     }
 
+    // Converts user input inside the text-field to array of coin values.
     private int[] parseCoinValuesFromFile(File inputFile) throws FileNotFoundException {
         Scanner input = new Scanner(inputFile);
         input.useDelimiter(",");
@@ -129,6 +131,7 @@ public class InputOptionsPane extends BorderPane {
         return coinValues;
     }
 
+    // Loads file containing the coin values.
     private File loadInputFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("C:\\Users\\ismae\\OneDrive\\Desktop"));

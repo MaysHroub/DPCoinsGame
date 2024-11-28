@@ -1,18 +1,14 @@
 package com.msreem.dpcoinsgame.panes;
 
-import com.msreem.dpcoinsgame.animation.Animation;
 import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
-import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
 
-import java.io.File;
-
+// Pane for displaying the dp table.
 public class DPTablePane extends BorderPane {
 
     public DPTablePane() {
@@ -33,7 +29,7 @@ public class DPTablePane extends BorderPane {
         dpTableTA.setEditable(false);
 
         DPGameLogic dpGameLogic = new DPGameLogic(navigationManager.getGameState().getCoinValues());
-        dpGameLogic.calculateTable();
+        dpGameLogic.buildTables();
         int[][] dp = dpGameLogic.getDpTable();
         char[][] dirs = dpGameLogic.getDirections();
 

@@ -12,10 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+// Pane for the manual input option.
 public class UserInputPane extends BorderPane {
 
     private Label alertLabel;
-
 
     public UserInputPane() {
         init();
@@ -61,6 +61,7 @@ public class UserInputPane extends BorderPane {
         Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+50, nextBtn.getTranslateY());
     }
 
+    // Converts input to array of coin values.
     private int[] convertToCoins(String input) {
         if (input == null) return null;
         String[] tokens = input.split(",");

@@ -5,8 +5,10 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
+// Provides utility methods for applying animation (fade and transition) for ui controls.
 public class Animation {
 
+    // Adds fade-in animation for given node during given time.
     public static void installFadeTransition(Node node, double durationInSecs) {
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(durationInSecs), node);
         fadeTransition.setFromValue(0);
@@ -16,6 +18,7 @@ public class Animation {
         fadeTransition.play();
     }
 
+    // Adds y-transition animation for given node during given time and from y position to another.
     public static void installTranslateYTransition(Node node, double durationInSecs, double fromY, double toY) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(durationInSecs), node);
         translateTransition.setFromY(fromY);
@@ -23,6 +26,7 @@ public class Animation {
         translateTransition.play();
     }
 
+    // Adds x-transition animation for given node during given time and from x position to another.
     public static void installTranslateXTransition(Node node, double durationInSecs, double fromX, double toX) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(durationInSecs), node);
         translateTransition.setFromX(fromX);

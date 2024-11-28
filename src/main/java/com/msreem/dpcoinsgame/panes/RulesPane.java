@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+// Pane displaying the rules.
 public class RulesPane extends VBox {
 
     public RulesPane() {
