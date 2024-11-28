@@ -37,6 +37,10 @@ public class DPGamePane extends StackPane {
     }
 
     private void init() {
+        DPTablePane tablePane = new DPTablePane();
+        tablePane.setDisable(true);
+        tablePane.setVisible(false);
+
         int[] coinValues = NavigationManager.getInstance().getGameState().getCoinValues();
         dpLogic = new DPGameLogic(coinValues);
         dpLogic.calculateTable();
@@ -132,7 +136,10 @@ public class DPGamePane extends StackPane {
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         resetBtn.setOnAction(e -> resetGame());
-        dpTableBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.DP_TABLE));
+        dpTableBtn.setOnAction(e -> {
+            tablePane.setDisable(false);
+            tablePane.setVisible(true);
+        });
         nextMoveBtn.setOnAction(e -> playNextMove());
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
@@ -161,7 +168,7 @@ public class DPGamePane extends StackPane {
 
         BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the next moves in the game.", null);
 
-        getChildren().addAll(layout, instructionToast);
+        getChildren().addAll(layout, instructionToast, tablePane);
 
         Animation.installFadeTransition(robotVB, 1);
         Animation.installFadeTransition(playerVB, 1);

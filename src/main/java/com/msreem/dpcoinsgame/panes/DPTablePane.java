@@ -24,7 +24,10 @@ public class DPTablePane extends BorderPane {
 
         Button backBtn = new Button("BACK");
         backBtn.setId("back-button");
-        backBtn.setOnAction(e -> navigationManager.navigateTo(PaneId.DP_GAME));
+        backBtn.setOnAction(e -> {
+            setDisable(true);
+            setVisible(false);
+        });
 
         TextArea dpTableTA = new TextArea();
         dpTableTA.setEditable(false);
@@ -66,7 +69,7 @@ public class DPTablePane extends BorderPane {
 
         setPadding(new Insets(40));
 
-        Animation.installFadeTransition(dpTableTA, 1);
+        setStyle("-fx-background-color: #141414;");
     }
 
 }
