@@ -43,11 +43,10 @@ public class UserInputPane extends BorderPane {
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
         backBtn.setId("back-button");
 
-        VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
+        VBox vBox = new VBox(40, promptLabel, inputTF, nextBtn, alertLabel);
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
-        setBottom(nextBtn);
         setTop(backBtn);
 
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
