@@ -21,6 +21,8 @@ public class PlayersNamePane extends BorderPane {
     }
 
     private void init() {
+        NavigationManager navigationManager = NavigationManager.getInstance();
+
         Label promptName1Label = new Label("Enter Player 1 Name"),
                 promptName2Label = new Label("Enter Player 2 Name"),
                 alertLabel = new Label();
@@ -42,11 +44,11 @@ public class PlayersNamePane extends BorderPane {
                     alertLabel.setText("The two names must not be the same.");
                     return;
                 }
-                NavigationManager.getInstance().getGameState().setPlayerNames(new String[]{nameOneTF.getText(), nameTwoTF.getText()});
-                NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
+                navigationManager.getGameState().setPlayerNames(new String[]{nameOneTF.getText(), nameTwoTF.getText()});
+                navigationManager.navigateTo(PaneId.INPUT_OPTIONS);
             }
         });
-        backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
+        backBtn.setOnAction(e -> navigationManager.navigateTo(PaneId.START));
         backBtn.setId("back-button");
 
         marioIV.setPreserveRatio(true);

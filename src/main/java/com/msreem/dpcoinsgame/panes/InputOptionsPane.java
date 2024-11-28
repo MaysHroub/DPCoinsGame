@@ -41,6 +41,7 @@ public class InputOptionsPane extends BorderPane {
         Button generateRandomBtn = new Button("Generate random data");
         Button backBtn = new Button("BACK");
 
+        NavigationManager navigationManager = NavigationManager.getInstance();
         loadFromFileBtn.setOnAction(e -> {
             File inputFile = loadInputFile();
             if (inputFile == null) {
@@ -61,16 +62,14 @@ public class InputOptionsPane extends BorderPane {
             if (coinValues == null)
                 alertL.setText("The selected file doesn't have the proper format.");
             else {
-                NavigationManager navigationManager = NavigationManager.getInstance();
                 navigationManager.getGameState().setCoinValues(coinValues);
                 PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.DP_GAME : PaneId.PLAYERS_GAME;
                 navigationManager.navigateTo(paneId);
             }
         });
-        enterManuallyBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.USER_INPUT));
-        generateRandomBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RANDOM_INPUT));
+        enterManuallyBtn.setOnAction(e -> navigationManager.navigateTo(PaneId.USER_INPUT));
+        generateRandomBtn.setOnAction(e -> navigationManager.navigateTo(PaneId.RANDOM_INPUT));
         backBtn.setOnAction(e -> {
-            NavigationManager navigationManager = NavigationManager.getInstance();
             PaneId paneId = navigationManager.getGameState().isLaunchDPGame() ? PaneId.START : PaneId.PLAYERS_NAME_INPUT;
             navigationManager.navigateTo(paneId);
         });
