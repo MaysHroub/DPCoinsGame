@@ -103,7 +103,7 @@ public class InputOptionsPane extends BorderPane {
     // Converts user input inside the text-field to array of coin values.
     private int[] parseCoinValuesFromFile(File inputFile) throws FileNotFoundException {
         Scanner input = new Scanner(inputFile);
-        input.useDelimiter(",");
+        input.useDelimiter("\\s*,\\s*");
 
         int length = 0;
 

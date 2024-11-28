@@ -64,7 +64,7 @@ public class UserInputPane extends BorderPane {
     // Converts input to array of coin values.
     private int[] convertToCoins(String input) {
         if (input == null) return null;
-        String[] tokens = input.split(",");
+        String[] tokens = input.split("\\s*,\\s*");
         if (tokens.length == 0 || tokens.length % 2 != 0) {
             alertLabel.setText("Please enter even number of coins and comma separated :)");
             return null;
