@@ -19,8 +19,8 @@ public class StartPane extends BorderPane {
 
     private void init() {
         Button rulesBtn = new Button("RULES");
-        Button twoPlayerBtn = new Button("TWO PLAYERS");
-        Button dpGameBtn = new Button("CPU BATTLE");
+        Button twoPlayerBtn = new Button("  TWO PLAYERS  ");
+        Button dpGameBtn = new Button("PRO VS. COMPUTER");
 
         rulesBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RULES));
         twoPlayerBtn.setOnAction(e -> {
