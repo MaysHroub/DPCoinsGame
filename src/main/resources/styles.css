@@ -12,9 +12,8 @@
 
 .text-area {
    -fx-font-family: 'Lucida Console';
-   -fx-font-size: 16;
-   -fx-line-spacing: 10;
-   -fx-font-weight: normal;
+   -fx-font-size: 20;
+   -fx-font-weight: bold;
 }
 
 .label {
@@ -25,7 +24,7 @@
 .button {
     -fx-background-color: #f5c116;
     -fx-text-fill: white;
-    -fx-font-size: 18;
+    -fx-font-size: 16;
     -fx-border-radius: 14;
     -fx-background-radius: 14;
 }
