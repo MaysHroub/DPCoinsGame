@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,8 +19,8 @@ public class StartPane extends BorderPane {
 
     private void init() {
         Button rulesBtn = new Button("RULES");
-        Button twoPlayerBtn = new Button("TWO PLAYERS");
-        Button dpGameBtn = new Button("CPU BATTLE");
+        Button twoPlayerBtn = new Button("  TWO PLAYERS  ");
+        Button dpGameBtn = new Button("PRO VS. COMPUTER");
 
         rulesBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.RULES));
         twoPlayerBtn.setOnAction(e -> {
@@ -38,13 +38,13 @@ public class StartPane extends BorderPane {
         VBox twoPlayersVB = new VBox(10, twoPlayersImg, twoPlayerBtn);
         twoPlayersVB.setAlignment(Pos.CENTER);
 
-        ImageView twoRobotsImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\two-robots.png");
-        twoRobotsImg.setFitHeight(200);
-        twoRobotsImg.setPreserveRatio(true);
-        VBox twoRobotsVB = new VBox(10, twoRobotsImg, dpGameBtn);
-        twoRobotsVB.setAlignment(Pos.CENTER);
+        ImageView playerVsRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\player-vs-comp.png");
+        playerVsRobotImg.setFitHeight(200);
+        playerVsRobotImg.setPreserveRatio(true);
+        VBox playerVsRobotVB = new VBox(10, playerVsRobotImg, dpGameBtn);
+        playerVsRobotVB.setAlignment(Pos.CENTER);
 
-        HBox buttonsHB = new HBox(200, twoPlayersVB, twoRobotsVB);
+        HBox buttonsHB = new HBox(200, twoPlayersVB, playerVsRobotVB);
         buttonsHB.setAlignment(Pos.CENTER);
 
         Label head1 = new Label("FIRST OR LAST");
@@ -70,10 +70,10 @@ public class StartPane extends BorderPane {
         BorderPane.setMargin(rulesBtn, new Insets(0, 0, 50, 0));
 
         Animation.installTranslateYTransition(titleVB, .8, titleVB.getTranslateY()-130, titleVB.getTranslateY());
-        Animation.installTranslateXTransition(twoPlayersVB, 1, twoPlayersVB.getTranslateX()-70, twoPlayersVB.getTranslateX());
-        Animation.installTranslateXTransition(twoRobotsVB, 1, twoRobotsVB.getTranslateX()+70, twoRobotsVB.getTranslateX());
+        Animation.installTranslateXTransition(twoPlayersVB, .8, twoPlayersVB.getTranslateX()-70, twoPlayersVB.getTranslateX());
+        Animation.installTranslateXTransition(playerVsRobotVB, .8, playerVsRobotVB.getTranslateX()+70, playerVsRobotVB.getTranslateX());
         Animation.installFadeTransition(buttonsHB, 1);
-        Animation.installTranslateYTransition(rulesBtn, 1.3, rulesBtn.getTranslateY()+50, rulesBtn.getTranslateY());
+        Animation.installTranslateYTransition(rulesBtn, .8, rulesBtn.getTranslateY()+50, rulesBtn.getTranslateY());
     }
 
 

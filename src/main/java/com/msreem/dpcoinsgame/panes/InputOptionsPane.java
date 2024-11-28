@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -90,10 +90,13 @@ public class InputOptionsPane extends BorderPane {
 
         setPadding(new Insets(20));
 
-        Animation.installFadeTransition(label, 1.5);
-        Animation.installTranslateYTransition(loadFromFileBtn, 1, loadFromFileBtn.getTranslateY()+200, loadFromFileBtn.getTranslateY());
-        Animation.installTranslateYTransition(enterManuallyBtn, 1.2, loadFromFileBtn.getTranslateY()+150, loadFromFileBtn.getTranslateY());
-        Animation.installTranslateYTransition(generateRandomBtn, 1.4, loadFromFileBtn.getTranslateY()+100, loadFromFileBtn.getTranslateY());
+        Animation.installFadeTransition(label, 1);
+        Animation.installFadeTransition(loadFromFileBtn, 1);
+        Animation.installFadeTransition(enterManuallyBtn, 1);
+        Animation.installFadeTransition(generateRandomBtn, 1);
+        Animation.installTranslateYTransition(loadFromFileBtn, .8, loadFromFileBtn.getTranslateY()+90, loadFromFileBtn.getTranslateY());
+        Animation.installTranslateYTransition(enterManuallyBtn, .9, loadFromFileBtn.getTranslateY()+70, loadFromFileBtn.getTranslateY());
+        Animation.installTranslateYTransition(generateRandomBtn, 1, loadFromFileBtn.getTranslateY()+50, loadFromFileBtn.getTranslateY());
     }
 
     private int[] parseCoinValuesFromFile(File inputFile) throws FileNotFoundException {

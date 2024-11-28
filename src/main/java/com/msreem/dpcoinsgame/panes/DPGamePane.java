@@ -3,7 +3,7 @@ package com.msreem.dpcoinsgame.panes;
 import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -44,17 +44,17 @@ public class DPGamePane extends StackPane {
 
         int n = coinValues.length;
 
-        turnL = new Label("Robot's Turn");
+        turnL = new Label("BMO's Turn");
         robotScoreL = new Label("SCORE: " + robotScore);
         playerScoreL = new Label("SCORE: " + playerScore);
         robotScoreL.setStyle("-fx-font-size: 18;");
         playerScoreL.setStyle("-fx-font-size: 18;");
 
-        ImageView greyRobotImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\grey-robot-fight.png"),
+        ImageView bmoImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\bmo.png"),
                 nerdPlayerImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\nerd-player-fight.png");
-        robotWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\robot-win.jpg");
+        robotWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\bmo-win.jpg");
         playerWinImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\nerd-win.jpg");
-        drawImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\robot-nerd-draw.jpg");
+        drawImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\bmo-player-draw.jpg");
 
         robotWinImg.setFitHeight(190);
         robotWinImg.setPreserveRatio(true);
@@ -62,13 +62,13 @@ public class DPGamePane extends StackPane {
         playerWinImg.setPreserveRatio(true);
         drawImg.setFitHeight(190);
         drawImg.setPreserveRatio(true);
-        greyRobotImg.setFitHeight(170);
-        greyRobotImg.setPreserveRatio(true);
+        bmoImg.setFitHeight(170);
+        bmoImg.setPreserveRatio(true);
         nerdPlayerImg.setFitHeight(170);
         nerdPlayerImg.setPreserveRatio(true);
 
 
-        VBox robotVB = new VBox(20, new Label("ROBOT"), greyRobotImg),
+        VBox robotVB = new VBox(20, new Label("BMO"), bmoImg),
                 playerVB = new VBox(20, new Label("MAGNUS"), nerdPlayerImg);
         robotVB.setAlignment(Pos.CENTER);
         playerVB.setAlignment(Pos.CENTER);
@@ -94,7 +94,7 @@ public class DPGamePane extends StackPane {
 
         robotCoinsTable = new TableView<>();
         robotCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> robotCol = new TableColumn<>("ROBOT Coins");
+        TableColumn<Label, String> robotCol = new TableColumn<>("BMO's Coins");
         robotCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         robotCol.setPrefWidth(200);
         robotCol.setSortable(false);
@@ -103,14 +103,14 @@ public class DPGamePane extends StackPane {
         robotCoinsTable.getStylesheets().add(
                 "data:text/css," +
                 ".table-view .column-header {" +
-                "  -fx-background-color: darkgrey;" +
+                "  -fx-background-color: #03A398;" +
                 "  -fx-text-fill: white;" +
                 "}"
         );
 
         playerCoinsTable = new TableView<>();
         playerCoinsTable.setPrefHeight(180);
-        TableColumn<Label, String> playerCol = new TableColumn<>("MAGNUS Coins");
+        TableColumn<Label, String> playerCol = new TableColumn<>("MAGNUS's Coins");
         playerCol.setCellValueFactory(new PropertyValueFactory<>("text"));
         playerCol.setPrefWidth(200);
         playerCol.setSortable(false);
@@ -163,12 +163,14 @@ public class DPGamePane extends StackPane {
 
         getChildren().addAll(layout, instructionToast);
 
-        Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-200, robotVB.getTranslateX());
-        Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+200, playerVB.getTranslateX());
+        Animation.installFadeTransition(robotVB, 1);
+        Animation.installFadeTransition(playerVB, 1);
+        Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-100, robotVB.getTranslateX());
+        Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+100, playerVB.getTranslateX());
     }
 
     private void resetGame() {
-        turnL.setText(((turn == 0) ? "ROBOT" : "MAGNUS") + "'s Turn");
+        turnL.setText(((turn == 0) ? "BMO" : "MAGNUS") + "'s Turn");
 
         nextMoveBtn.setDisable(false);
 
@@ -197,12 +199,12 @@ public class DPGamePane extends StackPane {
         coins[coinIdx].setDisable(true);
 
         if (turn == 0) {
-            coins[coinIdx].setStyle("-fx-background-color: #bfbfbf; -fx-border-color: lightgrey;");
+            coins[coinIdx].setStyle("-fx-background-color: #03A398; -fx-border-color: #03A398;");
             robotCoinsTable.getItems().add(coinL);
             robotScore += coinVal;
             robotScoreL.setText("SCORE: " + robotScore);
             turn = 1;
-            turnL.setText("MAGNUS' turn");
+            turnL.setText("MAGNUS's turn");
         }
         else {
             coins[coinIdx].setStyle("-fx-background-color: #f5b964;");
@@ -210,7 +212,7 @@ public class DPGamePane extends StackPane {
             playerScore += coinVal;
             playerScoreL.setText("SCORE: " + playerScore);
             turn = 0;
-            turnL.setText("Robot's turn");
+            turnL.setText("BMO's turn");
         }
 
         int n = dpLogic.getCoins().length;
@@ -221,10 +223,10 @@ public class DPGamePane extends StackPane {
     }
 
     private void announceWinner() {
-        String message = "DRAW Between Robot and MAGNUS!";
+        String message = "DRAW Between BMO and MAGNUS!";
         ImageView img = drawImg;
         if (robotScore > playerScore) {
-            message = "Robot has WON!";
+            message = "BMO has WON!";
             img = robotWinImg;
         }
         else if (robotScore < playerScore) {
@@ -265,7 +267,7 @@ public class DPGamePane extends StackPane {
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 
-        Animation.installFadeTransition(messageBP, 1.5);
+        Animation.installFadeTransition(messageBP, .7);
 
         return messageBP;
     }

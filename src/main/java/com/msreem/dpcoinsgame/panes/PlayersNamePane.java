@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -70,8 +70,8 @@ public class PlayersNamePane extends BorderPane {
         setPadding(new Insets(20, 20, 50, 20));
 
         Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
-        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-100, playerOneVB.getTranslateX());
-        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+100, playerTwoVB.getTranslateX());
+        Animation.installTranslateXTransition(playerOneVB, .8, playerOneVB.getTranslateX()-70, playerOneVB.getTranslateX());
+        Animation.installTranslateXTransition(playerTwoVB, .8, playerTwoVB.getTranslateX()+70, playerTwoVB.getTranslateX());
     }
 
     private boolean isInputValid(TextField inputTF, Label alertLabel) {

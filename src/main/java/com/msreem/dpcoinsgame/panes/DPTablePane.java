@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.animation.Animation;
 import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
@@ -62,6 +63,8 @@ public class DPTablePane extends BorderPane {
         BorderPane.setMargin(dpTableTA, new Insets(40, 0, 0, 0));
 
         setPadding(new Insets(40));
+
+        Animation.installFadeTransition(dpTableTA, 1);
     }
 
 }

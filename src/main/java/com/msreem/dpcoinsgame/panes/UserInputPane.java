@@ -2,7 +2,7 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -43,11 +43,10 @@ public class UserInputPane extends BorderPane {
         backBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS));
         backBtn.setId("back-button");
 
-        VBox vBox = new VBox(40, promptLabel, inputTF, alertLabel);
+        VBox vBox = new VBox(40, promptLabel, inputTF, nextBtn, alertLabel);
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
-        setBottom(nextBtn);
         setTop(backBtn);
 
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
@@ -55,8 +54,9 @@ public class UserInputPane extends BorderPane {
 
         setPadding(new Insets(20));
 
-        Animation.installFadeTransition(inputTF, 1.2);
-        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
+        Animation.installFadeTransition(inputTF, 1);
+        Animation.installFadeTransition(nextBtn, 1);
+        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+50, nextBtn.getTranslateY());
     }
 
     private int[] convertToCoins(String input) {

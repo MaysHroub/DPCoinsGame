@@ -2,16 +2,12 @@ package com.msreem.dpcoinsgame.panes;
 
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
-import com.msreem.dpcoinsgame.util.Animation;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.Event;
+import com.msreem.dpcoinsgame.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -150,8 +146,10 @@ public class TwoPlayerPane extends StackPane {
 
         getChildren().addAll(layout, toast);
 
-        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-200, playerOneVB.getTranslateX());
-        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+200, playerTwoVB.getTranslateX());
+        Animation.installFadeTransition(playerOneVB, 1);
+        Animation.installFadeTransition(playerTwoVB, 1);
+        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-100, playerOneVB.getTranslateX());
+        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+100, playerTwoVB.getTranslateX());
     }
 
     private void resetGame() {
@@ -253,7 +251,7 @@ public class TwoPlayerPane extends StackPane {
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 
-        Animation.installFadeTransition(messageBP, 1.5);
+        Animation.installFadeTransition(messageBP, .7);
 
         return messageBP;
     }
