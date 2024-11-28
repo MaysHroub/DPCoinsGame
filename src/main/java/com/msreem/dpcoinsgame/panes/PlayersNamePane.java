@@ -38,6 +38,10 @@ public class PlayersNamePane extends BorderPane {
 
         nextBtn.setOnAction(e -> {
             if (isInputValid(nameOneTF, alertLabel) && isInputValid(nameTwoTF, alertLabel)) {
+                if (nameOneTF.getText().equalsIgnoreCase(nameTwoTF.getText())) {
+                    alertLabel.setText("The two names must not be the same.");
+                    return;
+                }
                 NavigationManager.getInstance().getGameState().setPlayerNames(new String[]{nameOneTF.getText(), nameTwoTF.getText()});
                 NavigationManager.getInstance().navigateTo(PaneId.INPUT_OPTIONS);
             }
