@@ -38,7 +38,7 @@ public class StartPane extends BorderPane {
         VBox twoPlayersVB = new VBox(10, twoPlayersImg, twoPlayerBtn);
         twoPlayersVB.setAlignment(Pos.CENTER);
 
-        ImageView twoRobotsImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\two-robots.png");
+        ImageView twoRobotsImg = new ImageView("C:\\Users\\ismae\\IdeaProjects\\DPCoinsGame\\src\\main\\resources\\images\\player-vs-comp.png");
         twoRobotsImg.setFitHeight(200);
         twoRobotsImg.setPreserveRatio(true);
         VBox twoRobotsVB = new VBox(10, twoRobotsImg, dpGameBtn);
