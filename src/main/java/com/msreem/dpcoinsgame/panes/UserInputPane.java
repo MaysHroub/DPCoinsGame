@@ -54,8 +54,9 @@ public class UserInputPane extends BorderPane {
 
         setPadding(new Insets(20));
 
-        Animation.installFadeTransition(inputTF, 1.2);
-        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
+        Animation.installFadeTransition(inputTF, 1);
+        Animation.installFadeTransition(nextBtn, 1);
+        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+50, nextBtn.getTranslateY());
     }
 
     private int[] convertToCoins(String input) {

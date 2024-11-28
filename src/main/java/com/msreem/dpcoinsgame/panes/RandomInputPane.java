@@ -52,7 +52,6 @@ public class RandomInputPane extends BorderPane {
         vBox.setAlignment(Pos.CENTER);
 
         setCenter(new Group(vBox));
-        setBottom(nextBtn);
         setTop(backBtn);
 
         BorderPane.setAlignment(nextBtn, Pos.CENTER);
@@ -60,8 +59,9 @@ public class RandomInputPane extends BorderPane {
 
         setPadding(new Insets(20));
 
-        Animation.installFadeTransition(inputTF, 1.2);
-        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+100, nextBtn.getTranslateY());
+        Animation.installFadeTransition(inputTF, 1);
+        Animation.installFadeTransition(nextBtn, 1);
+        Animation.installTranslateYTransition(nextBtn, .8, nextBtn.getTranslateY()+50, nextBtn.getTranslateY());
     }
 
     private int[] generateCoins(String numberOfCoins) {

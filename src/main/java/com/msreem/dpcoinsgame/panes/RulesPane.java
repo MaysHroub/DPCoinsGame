@@ -1,5 +1,6 @@
 package com.msreem.dpcoinsgame.panes;
 
+import com.msreem.dpcoinsgame.animation.Animation;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
 import javafx.geometry.Insets;
@@ -38,6 +39,10 @@ public class RulesPane extends VBox {
         setSpacing(30);
         setPadding(new Insets(30, 160, 30, 160));
         setAlignment(Pos.CENTER);
+
+        Animation.installFadeTransition(rulesL, 1);
+        Animation.installFadeTransition(backBtn, .5);
+        Animation.installTranslateYTransition(backBtn, .5, backBtn.getTranslateY()+50, backBtn.getTranslateY());
     }
 
 }

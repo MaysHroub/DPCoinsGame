@@ -163,8 +163,10 @@ public class DPGamePane extends StackPane {
 
         getChildren().addAll(layout, instructionToast);
 
-        Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-200, robotVB.getTranslateX());
-        Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+200, playerVB.getTranslateX());
+        Animation.installFadeTransition(robotVB, 1);
+        Animation.installFadeTransition(playerVB, 1);
+        Animation.installTranslateXTransition(robotVB, 1, robotVB.getTranslateX()-100, robotVB.getTranslateX());
+        Animation.installTranslateXTransition(playerVB, 1, playerVB.getTranslateX()+100, playerVB.getTranslateX());
     }
 
     private void resetGame() {
@@ -265,7 +267,7 @@ public class DPGamePane extends StackPane {
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 
-        Animation.installFadeTransition(messageBP, 1.5);
+        Animation.installFadeTransition(messageBP, .7);
 
         return messageBP;
     }

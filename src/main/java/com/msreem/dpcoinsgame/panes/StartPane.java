@@ -70,10 +70,10 @@ public class StartPane extends BorderPane {
         BorderPane.setMargin(rulesBtn, new Insets(0, 0, 50, 0));
 
         Animation.installTranslateYTransition(titleVB, .8, titleVB.getTranslateY()-130, titleVB.getTranslateY());
-        Animation.installTranslateXTransition(twoPlayersVB, 1, twoPlayersVB.getTranslateX()-70, twoPlayersVB.getTranslateX());
-        Animation.installTranslateXTransition(twoRobotsVB, 1, twoRobotsVB.getTranslateX()+70, twoRobotsVB.getTranslateX());
+        Animation.installTranslateXTransition(twoPlayersVB, .8, twoPlayersVB.getTranslateX()-70, twoPlayersVB.getTranslateX());
+        Animation.installTranslateXTransition(twoRobotsVB, .8, twoRobotsVB.getTranslateX()+70, twoRobotsVB.getTranslateX());
         Animation.installFadeTransition(buttonsHB, 1);
-        Animation.installTranslateYTransition(rulesBtn, 1.3, rulesBtn.getTranslateY()+50, rulesBtn.getTranslateY());
+        Animation.installTranslateYTransition(rulesBtn, .8, rulesBtn.getTranslateY()+50, rulesBtn.getTranslateY());
     }
 
 

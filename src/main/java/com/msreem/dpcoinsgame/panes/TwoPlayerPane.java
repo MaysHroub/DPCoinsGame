@@ -146,8 +146,10 @@ public class TwoPlayerPane extends StackPane {
 
         getChildren().addAll(layout, toast);
 
-        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-200, playerOneVB.getTranslateX());
-        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+200, playerTwoVB.getTranslateX());
+        Animation.installFadeTransition(playerOneVB, 1);
+        Animation.installFadeTransition(playerTwoVB, 1);
+        Animation.installTranslateXTransition(playerOneVB, 1, playerOneVB.getTranslateX()-100, playerOneVB.getTranslateX());
+        Animation.installTranslateXTransition(playerTwoVB, 1, playerTwoVB.getTranslateX()+100, playerTwoVB.getTranslateX());
     }
 
     private void resetGame() {
@@ -249,7 +251,7 @@ public class TwoPlayerPane extends StackPane {
         BorderPane.setAlignment(closeBtn, Pos.TOP_RIGHT);
         BorderPane.setAlignment(messageL, Pos.CENTER);
 
-        Animation.installFadeTransition(messageBP, 1.5);
+        Animation.installFadeTransition(messageBP, .7);
 
         return messageBP;
     }
