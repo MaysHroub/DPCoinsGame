@@ -18,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import java.util.Arrays;
@@ -169,7 +170,7 @@ public class DPGamePane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        BorderPane instructionToast = createMessageToast("Click on the 'NEXT MOVE' button to see the next moves in the game.", null);
+        BorderPane instructionToast = createToastMessage("Click on the 'NEXT MOVE' button to see the next moves in the game.", null);
 
         getChildren().addAll(layout, instructionToast, tablePane);
 
@@ -267,18 +268,18 @@ public class DPGamePane extends StackPane {
             img = playerWinImg;
         }
 
-        BorderPane toast = createMessageToast(message, img);
+        BorderPane toast = createToastMessage(message, img);
         getChildren().add(toast);
     }
 
     // Returns a pane containing given message and image, representing a toast message.
-    private BorderPane createMessageToast(String message, ImageView img) {
+    private BorderPane createToastMessage(String message, ImageView img) {
         BorderPane messageBP = new BorderPane();
         messageBP.setStyle("-fx-background-color: rgba(80, 80, 80, 0.95); -fx-background-radius: 10;");
 
         Label messageL = new Label(message);
         messageL.setWrapText(true);
-        messageL.setAlignment(Pos.CENTER);
+        messageL.setTextAlignment(TextAlignment.CENTER);
         messageL.setStyle("-fx-font-size: 16;");
 
         Button closeBtn = new Button("CLOSE");
