@@ -4,6 +4,8 @@ import com.msreem.dpcoinsgame.dp.DPGameLogic;
 import com.msreem.dpcoinsgame.navigation.NavigationManager;
 import com.msreem.dpcoinsgame.paneid.PaneId;
 import com.msreem.dpcoinsgame.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.util.Arrays;
 
@@ -25,7 +28,7 @@ public class DPGamePane extends StackPane {
     private TableView<Label> robotCoinsTable, playerCoinsTable;
     private Label turnL, robotScoreL, playerScoreL;
     private ImageView robotWinImg, playerWinImg, drawImg;
-    private Button nextMoveBtn;
+    private Button startPlayBtn;
     private DPGameLogic dpLogic;
     private Coin[] coins;
     private int i1, i2;
@@ -132,7 +135,7 @@ public class DPGamePane extends StackPane {
         Button resetBtn = new Button("RESET"),
                 homeBtn = new Button(" HOME "),
                 dpTableBtn = new Button("SHOW DP TABLE");
-        nextMoveBtn = new Button("NEXT MOVE");
+        startPlayBtn = new Button("START AUTO PLAY");
 
         homeBtn.setOnAction(e -> NavigationManager.getInstance().navigateTo(PaneId.START));
         resetBtn.setOnAction(e -> resetGame());
@@ -140,11 +143,11 @@ public class DPGamePane extends StackPane {
             tablePane.setDisable(false);
             tablePane.setVisible(true);
         });
-        nextMoveBtn.setOnAction(e -> playNextMove());
+        startPlayBtn.setOnAction(e -> startAutoPlay());
 
         HBox lowerBtnsHB = new HBox(40, resetBtn, homeBtn);
         lowerBtnsHB.setAlignment(Pos.CENTER);
-        VBox buttonsVB = new VBox(30, nextMoveBtn, dpTableBtn, lowerBtnsHB);
+        VBox buttonsVB = new VBox(30, startPlayBtn, dpTableBtn, lowerBtnsHB);
         buttonsVB.setAlignment(Pos.CENTER);
 
         VBox robotCoinsVB = new VBox(20, robotScoreL, robotCoinsTable);
@@ -180,7 +183,7 @@ public class DPGamePane extends StackPane {
     private void resetGame() {
         turnL.setText(((turn == 0) ? "BMO" : "MAGNUS") + "'s Turn");
 
-        nextMoveBtn.setDisable(false);
+        startPlayBtn.setDisable(false);
 
         robotCoinsTable.getItems().clear();
         robotCoinsTable.refresh();
@@ -198,6 +201,26 @@ public class DPGamePane extends StackPane {
         robotScoreL.setText("SCORE: 0");
         playerScore = 0;
         playerScoreL.setText("SCORE: 0");
+    }
+
+    // Starts automatic play
+    private void startAutoPlay() {
+        startPlayBtn.setDisable(true); // Disable button during animation
+
+        // Creates a Timeline for sequential execution of playNextMove
+        Timeline timeline = new Timeline();
+
+        int moves = dpLogic.getCoins().length; // Number of moves to animate
+        Duration interval = Duration.seconds(1); // 1 second delay between moves
+
+        for (int i = 0; i < moves; i++) {
+            timeline.getKeyFrames().add(new KeyFrame(
+                    interval.multiply(i), // Adds a delay for each move
+                    e -> playNextMove()   // Calls playNextMove for each step
+            ));
+        }
+
+        timeline.play(); // Starts the animation
     }
 
     // Updates scores and coins according to the player's move in either turns.
@@ -227,7 +250,7 @@ public class DPGamePane extends StackPane {
         int n = dpLogic.getCoins().length;
         if (i1 == n/2 && i2 == n/2) {
             announceWinner();
-            nextMoveBtn.setDisable(true);
+            startPlayBtn.setDisable(true);
         }
     }
 
