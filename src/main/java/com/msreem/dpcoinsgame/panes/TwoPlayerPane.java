@@ -102,7 +102,13 @@ public class TwoPlayerPane extends StackPane {
         playerOneCol.setPrefWidth(200);
         playerOneCol.setSortable(false);
         playerOneCoinsTable.getColumns().add(playerOneCol);
-
+        playerOneCoinsTable.getStylesheets().add(
+                "data:text/css," +
+                        ".table-view .column-header {" +
+                        "  -fx-background-color: red;" +
+                        "  -fx-text-fill: white;" +
+                        "}"
+        );
 
         playerTwoCoinsTable = new TableView<>();
         playerTwoCoinsTable.setPrefHeight(180);
@@ -112,6 +118,14 @@ public class TwoPlayerPane extends StackPane {
         playerTwoCol.setPrefWidth(200);
         playerTwoCol.setSortable(false);
         playerTwoCoinsTable.getColumns().add(playerTwoCol);
+        playerTwoCoinsTable.getStylesheets().add(
+                "data:text/css," +
+                        ".table-view .column-header {" +
+                        "  -fx-background-color: green;" +
+                        "  -fx-text-fill: white;" +
+                        "}"
+        );
+
 
         VBox playerOneCoinsVB = new VBox(20, playerOneScoreL, playerOneCoinsTable);
         playerOneCoinsVB.setAlignment(Pos.CENTER);
