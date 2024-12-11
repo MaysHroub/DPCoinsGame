@@ -7,12 +7,12 @@ This game demonstrates concepts of dynamic programming, user interaction with a 
 I used Singleton design pattern in `NaviagationManager` class to navigate between game panes, and applied Single Responsibility Principle to ensure clean, modular, and maintainable code.
 
 ## Features
-- Dynamic Programming: Implements a dynamic programming solution for coin selection.
-- Real-Time Updates: UI updates as players make their moves, displaying scores and coin selections.
-- Animation: Animates UI components of the screen.
-- Different Input Options: There are three options, manually, randomly generated, and reading from file.
-- Scoreboard: Displays current scores for both players.
-- Game End: Announces the winner once all coins are selected.
+- **Dynamic Programming**: Implements a dynamic programming solution for coin selection.
+- **Real-Time Updates**: UI updates as players make their moves, displaying scores and coin selections.
+- **Animation**: Animates UI components of the screen.
+- **Different Input Options**: There are three options, manually, randomly generated, and reading from file.
+- **Scoreboard**: Displays current scores for both players.
+- **Game End**: Announces the winner once all coins are selected.
 - There are two modes in the game: Two-Player mode and DP-Game mode.
   - **Two-Player mode**: A classic turn-based game where two players compete.
   - **DP-Game Mode**: Watch the game play out automatically based on dynamic programming logic. (It's a Computer vs. Computer game)
