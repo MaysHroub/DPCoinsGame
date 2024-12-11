@@ -170,7 +170,7 @@ public class DPGamePane extends StackPane {
 
         BorderPane.setMargin(coinsHB, new Insets(20, 0, 20, 0));
 
-        BorderPane instructionToast = createToastMessage("Click on the 'NEXT MOVE' button to see the next moves in the game.", null);
+        BorderPane instructionToast = createToastMessage("Click the 'START AUTO PLAY' button to begin the game.", null);
 
         getChildren().addAll(layout, instructionToast, tablePane);
 
