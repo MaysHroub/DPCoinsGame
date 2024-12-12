@@ -221,6 +221,10 @@ public class DPGamePane extends StackPane {
             ));
         }
 
+        timeline.setOnFinished(e -> {
+            announceWinner();
+        });
+
         timeline.play(); // Starts the animation
     }
 
@@ -246,12 +250,6 @@ public class DPGamePane extends StackPane {
             playerScoreL.setText("SCORE: " + playerScore);
             turn = 0;
             turnL.setText("BMO's turn");
-        }
-
-        int n = dpLogic.getCoins().length;
-        if (i1 == n/2 && i2 == n/2) {
-            announceWinner();
-            startPlayBtn.setDisable(true);
         }
     }
 
