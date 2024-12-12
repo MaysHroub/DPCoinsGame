@@ -1,10 +1,21 @@
 # DPCoinGame
+*"Optimal strategy for a game using dynamic programming."*
 
 ## Overview
 DPCoinsGame is a dynamic programming-based game where players take turns choosing coins (first or last coins only) strategically to maximize their score. 
 This game demonstrates concepts of dynamic programming, user interaction with a GUI built with JavaFX, and game logic implemented using Java.
 
 I used Singleton design pattern in `NaviagationManager` class to navigate between game panes, and applied Single Responsibility Principle to ensure clean, modular, and maintainable code.
+
+## Dynamic Programming Logic
+DP Relation Used:
+
+![dp relation](https://github.com/user-attachments/assets/be685956-1371-401f-9bf7-24599136ca87)
+***i***  is a pointer to the start of the coins array and  ***j***  is a pointer to the end of the array.
+
+The initial value is:
+- If we have one coin, we take it.
+- If we have two coins, we take the maximum one.
 
 ## Features
 - **Dynamic Programming**: Implements a dynamic programming solution for coin selection.
