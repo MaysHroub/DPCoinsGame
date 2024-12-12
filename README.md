@@ -8,12 +8,12 @@ This game demonstrates concepts of dynamic programming, user interaction with a 
 I used Singleton design pattern in `NaviagationManager` class to navigate between game panes, and applied Single Responsibility Principle to ensure clean, modular, and maintainable code.
 
 ## Dynamic Programming Logic
-DP Relation Used:
+**DP Relation** Used:
 
 ![dp relation](https://github.com/user-attachments/assets/be685956-1371-401f-9bf7-24599136ca87)
 ***i***  is a pointer to the start of the coins array and  ***j***  is a pointer to the end of the array.
 
-The initial value is:
+**Initial value**:
 - If we have one coin, we take it.
 - If we have two coins, we take the maximum one.
 
