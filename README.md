@@ -1,5 +1,5 @@
-# DPCoinGame
-*"Optimal strategy for a game using dynamic programming."*
+# Optimal Coin Game Strategy with Dynamic Programming 🪙
+Or known as *"Optimal strategy for a game using dynamic programming".*
 
 ## Overview
 DPCoinsGame is a dynamic programming-based game where players take turns choosing coins (first or last coins only) strategically to maximize their score. 
